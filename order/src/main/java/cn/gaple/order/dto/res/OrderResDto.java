@@ -1,6 +1,6 @@
 package cn.gaple.order.dto.res;
 
-import cn.gaple.core.framework.dto.GXBaseDto;
+import com.geoxus.core.framework.dto.GXBaseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

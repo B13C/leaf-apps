@@ -1,4 +1,4 @@
-package com.geoxus;
+package cn.gaple;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

@@ -1,7 +1,7 @@
 package cn.gaple.order.cache.impl;
 
-import cn.gaple.sso.cache.GXSSOCache;
-import cn.gaple.sso.security.token.GXSSOToken;
+import com.geoxus.sso.cache.GXSSOCache;
+import com.geoxus.sso.security.token.GXSSOToken;
 import org.springframework.stereotype.Component;
 
 @Component

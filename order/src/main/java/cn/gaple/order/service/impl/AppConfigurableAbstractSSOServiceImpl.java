@@ -1,7 +1,7 @@
 package cn.gaple.order.service.impl;
 
-import cn.gaple.sso.security.token.GXSSOToken;
-import cn.gaple.sso.service.GXConfigurableAbstractSSOService;
+import com.geoxus.sso.security.token.GXSSOToken;
+import com.geoxus.sso.service.GXConfigurableAbstractSSOService;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;

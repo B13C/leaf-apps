@@ -2,8 +2,8 @@ package cn.gaple.order.builder;
 
 import cn.hutool.core.lang.Dict;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import cn.gaple.core.datasource.builder.GXBaseBuilder;
-import cn.gaple.core.datasource.constant.GXBaseBuilderConstant;
+import com.geoxus.core.datasource.builder.GXBaseBuilder;
+import com.geoxus.core.datasource.constant.GXBaseBuilderConstant;
 import org.apache.ibatis.jdbc.SQL;
 
 public class UserBuilder implements GXBaseBuilder {

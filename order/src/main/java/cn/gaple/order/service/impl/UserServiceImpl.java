@@ -7,12 +7,20 @@ import cn.gaple.order.entity.UserEntity;
 import cn.gaple.order.mapper.UserMapper;
 import cn.gaple.order.mapstruct.UserProtocolMapstruct;
 import cn.gaple.order.service.UserService;
+import com.geoxus.core.datasource.service.GXDBBaseService;
+import com.geoxus.core.datasource.service.GXValidateDBExistsService;
+import com.geoxus.core.datasource.service.GXValidateDBUniqueService;
+import com.geoxus.core.datasource.service.impl.GXDBBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @Service
-public class UserServiceImpl extends cn.gaple.core.datasource.service.impl.GXDBBaseServiceImpl<UserEntity, UserMapper, UserDao> implements UserService, cn.gaple.core.datasource.service.GXValidateDBExistsService, cn.gaple.core.datasource.service.GXValidateDBUniqueService, cn.gaple.core.datasource.service.GXDBBaseService<UserEntity, UserMapper, UserDao> {
+public class UserServiceImpl extends GXDBBaseServiceImpl<UserEntity, UserMapper, UserDao> implements
+        UserService,
+        GXValidateDBExistsService,
+        GXValidateDBUniqueService,
+        GXDBBaseService<UserEntity, UserMapper, UserDao> {
     @Resource
     private UserProtocolMapstruct userProtocolMapstruct;
 

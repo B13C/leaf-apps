@@ -1,6 +1,5 @@
 package cn.gaple.order.dto.protocol.req;
 
-import cn.gaple.common.service.impl.GXValidateJsonFieldServiceImpl;
 import cn.gaple.order.service.impl.MyGXValidateExtDataService02;
 import cn.gaple.order.service.impl.MyGXValidateJsonFieldServiceImpl;
 import com.geoxus.core.framework.annotation.GXMergeSingleField;
@@ -36,7 +35,7 @@ public class UserReqProtocol extends GXBaseReqProtocol {
     @GXMergeSingleField(fieldName = "author", service = MyGXValidateJsonFieldServiceImpl.class)
     private String author;
 
-    @GXMergeSingleField(fieldName = "sub_title", service = GXValidateJsonFieldServiceImpl.class)
+    @GXMergeSingleField(fieldName = "sub_title", service = MyGXValidateJsonFieldServiceImpl.class)
     private String subTitle;
 
     @Override

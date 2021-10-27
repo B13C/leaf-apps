@@ -15,6 +15,8 @@ import cn.gaple.order.service.UserService;
 import cn.hutool.core.lang.Dict;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.geoxus.core.framework.annotation.GXRequestBody;
+import com.geoxus.core.framework.dto.protocol.req.GXBaseSearchReqProtocol;
+import com.geoxus.core.framework.dto.protocol.res.GXPaginationProtocol;
 import com.geoxus.core.framework.util.GXResultUtil;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.validation.annotation.Validated;

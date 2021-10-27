@@ -1,7 +1,7 @@
 package cn.gaple.order.repository.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import cn.gaple.core.datasource.entity.GXBaseEntity;
+import com.geoxus.core.datasource.entity.GXBaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;

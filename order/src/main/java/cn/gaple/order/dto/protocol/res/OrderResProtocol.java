@@ -1,6 +1,6 @@
 package cn.gaple.order.dto.protocol.res;
 
-import cn.gaple.core.framework.dto.GXBaseData;
+import com.geoxus.core.framework.dto.GXBaseData;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

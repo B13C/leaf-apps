@@ -1,6 +1,6 @@
 package cn.gaple.order.plugins.impl;
 
-import cn.gaple.sso.plugins.GXSSOPlugin;
+import com.geoxus.sso.plugins.GXSSOPlugin;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

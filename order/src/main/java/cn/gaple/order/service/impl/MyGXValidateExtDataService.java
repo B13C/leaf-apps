@@ -1,6 +1,6 @@
 package cn.gaple.order.service.impl;
 
-import cn.gaple.core.framework.validator.GXValidateExtDataService;
+import com.geoxus.core.framework.validator.GXValidateExtDataService;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintValidatorContext;

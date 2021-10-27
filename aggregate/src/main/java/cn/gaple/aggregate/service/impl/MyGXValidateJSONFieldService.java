@@ -1,4 +1,4 @@
-package com.geoxus.aggregate.service.impl;
+package cn.gaple.aggregate.service.impl;
 
 import com.geoxus.core.framework.properties.GXCommonProperties;
 import com.geoxus.core.framework.validator.GXValidateJSONFieldService;
@@ -9,8 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 
 @Service
 public class MyGXValidateJSONFieldService implements GXValidateJSONFieldService {
-    @Resource
-    private GXCommonProperties commonProperties;
+
 
     @Override
     public boolean validateJsonFieldData(Object o, String tableName, String parentFieldName, String fieldName, ConstraintValidatorContext context) throws UnsupportedOperationException {

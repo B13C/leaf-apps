@@ -1,8 +1,8 @@
 package cn.gaple.order.dto;
 
-import cn.gaple.core.framework.dto.GXBaseDto;
-import cn.gaple.core.framework.util.GXValidatorUtil;
-import cn.gaple.core.framework.validator.group.Group;
+import com.geoxus.core.framework.dto.GXBaseDto;
+import com.geoxus.core.framework.util.GXValidatorUtil;
+import com.geoxus.core.framework.validator.group.Group;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;

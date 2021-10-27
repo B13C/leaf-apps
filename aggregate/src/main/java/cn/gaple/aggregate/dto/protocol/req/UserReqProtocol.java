@@ -1,9 +1,12 @@
-package com.geoxus.aggregate.dto.protocol.req;
+package cn.gaple.aggregate.dto.protocol.req;
 
-import com.geoxus.aggregate.service.impl.MyGXValidateJSONFieldService;
+import cn.gaple.aggregate.service.impl.MyGXValidateJSONFieldService;
 import com.geoxus.core.framework.annotation.GXMergeSingleField;
 import com.geoxus.core.framework.annotation.GXValidateExtData;
 import lombok.Data;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class UserReqProtocol {
@@ -19,4 +22,7 @@ public class UserReqProtocol {
 
     @GXValidateExtData(tableName = "")
     private String ext;
+
+    @Valid
+    private UserDetailProtocol userDetail;
 }

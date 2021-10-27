@@ -2,10 +2,10 @@ package cn.gaple.order.mapper;
 
 import cn.hutool.core.lang.Dict;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import cn.gaple.core.datasource.mapper.GXBaseMapper;
 import cn.gaple.order.builder.UserBuilder;
 import cn.gaple.order.dto.protocol.res.UserResProtocol;
 import cn.gaple.order.entity.UserEntity;
+import com.geoxus.core.datasource.mapper.GXBaseMapper;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;

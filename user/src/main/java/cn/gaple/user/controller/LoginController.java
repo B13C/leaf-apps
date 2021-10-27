@@ -1,5 +1,6 @@
-package  cn.gaple.user.controller;
+package cn.gaple.user.controller;
 
+import cn.gaple.user.plugins.impl.GXLoginSSOPluginImpl;
 import cn.hutool.core.lang.Dict;
 import com.geoxus.core.framework.util.GXResultUtil;
 import com.geoxus.core.framework.util.GXSpringContextUtil;
@@ -9,7 +10,6 @@ import com.geoxus.sso.enums.GXTokenOrigin;
 import com.geoxus.sso.properties.GXSSOConfigProperties;
 import com.geoxus.sso.security.token.GXSSOToken;
 import com.geoxus.sso.util.GXSSOHelperUtil;
-import com.geoxus.user.plugins.impl.GXLoginSSOPluginImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

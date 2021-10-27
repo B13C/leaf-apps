@@ -1,8 +1,8 @@
 package cn.gaple.order.mapstruct;
 
-import cn.gaple.core.framework.mapstruct.GXBaseMapStruct;
 import cn.gaple.order.dto.protocol.res.OrderResProtocol;
 import cn.gaple.order.dto.res.OrderResDto;
+import com.geoxus.core.framework.mapstruct.GXBaseMapStruct;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
