@@ -22,6 +22,7 @@
         <java.version>11</java.version>
         <lombok.version>1.18.22</lombok.version>
         <org.mapstruct.version>1.5.0.Beta1</org.mapstruct.version>
+        <leaf.framework.version>1.0.5-SNAPSHOT</leaf.framework.version>
     </properties>
 
     <dependencyManagement>
@@ -29,17 +30,17 @@
             <dependency>
                 <groupId>com.geoxus.framework</groupId>
                 <artifactId>leaf-base-framework</artifactId>
-                <version>1.0.5-SNAPSHOT</version>
+                <version>${leaf.framework.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.geoxus.framework</groupId>
                 <artifactId>leaf-base-sso</artifactId>
-                <version>1.0.5-SNAPSHOT</version>
+                <version>${leaf.framework.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.geoxus.framework</groupId>
                 <artifactId>leaf-base-redisson</artifactId>
-                <version>1.0.5-SNAPSHOT</version>
+                <version>${leaf.framework.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
