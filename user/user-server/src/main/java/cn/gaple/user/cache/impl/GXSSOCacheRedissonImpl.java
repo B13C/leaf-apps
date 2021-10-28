@@ -1,17 +1,8 @@
 package cn.gaple.user.cache.impl;
 
-import cn.hutool.core.convert.Convert;
-import com.geoxus.sso.cache.GXSSOCache;
-import com.geoxus.sso.security.token.GXSSOToken;
-import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RedissonClient;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
-
-@Slf4j
-@Component
-public class GXSSOCacheRedissonImpl implements GXSSOCache {
+/*@Slf4j
+@Component*/
+public class GXSSOCacheRedissonImpl { /*implements GXSSOCache {
     @Resource
     private RedissonClient redissonClient;
 
@@ -30,5 +21,5 @@ public class GXSSOCacheRedissonImpl implements GXSSOCache {
     @Override
     public boolean delete(String key) {
         return false;
-    }
+    }*/
 }

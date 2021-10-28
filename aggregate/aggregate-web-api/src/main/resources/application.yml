@@ -1,10 +1,8 @@
+server:
+  port: 3344
 spring:
   application:
     name: user
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
-      - org.redisson.spring.starter.RedissonAutoConfiguration
 dubbo:
   registry:
     address: zookeeper://127.0.0.1:2181
@@ -25,3 +23,4 @@ nacos:
     data-id: britton.test.yml
     type: yaml
     namespace: d937e439-cac3-4004-8f13-b88fbe0bcd56  # 需要设置  否则不能自动更新
+
