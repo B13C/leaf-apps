@@ -3,13 +3,13 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>user</artifactId>
+        <artifactId>attributes</artifactId>
         <groupId>cn.gaple</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>user-web-api</artifactId>
+    <artifactId>attributes-webapi</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -23,9 +23,8 @@
             <artifactId>leaf-base-framework</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.gaple</groupId>
-            <artifactId>user-server</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.geoxus.framework</groupId>
+            <artifactId>leaf-base-dubbo-zk</artifactId>
         </dependency>
     </dependencies>
 
@@ -36,7 +35,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot-dependencies.version}</version>
                 <configuration>
-                    <mainClass>cn.gaple.UserApplication</mainClass>
+                    <mainClass>cn.gaple.AggregateAPP</mainClass>
                     <classifier>exec</classifier>
                     <layout>ZIP</layout>
                     <fork>true</fork>
@@ -86,5 +85,4 @@
         </resources>
 
     </build>
-
 </project>
