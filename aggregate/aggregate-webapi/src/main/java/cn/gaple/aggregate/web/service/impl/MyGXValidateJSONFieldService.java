@@ -1,10 +1,8 @@
 package cn.gaple.aggregate.web.service.impl;
 
-import com.geoxus.core.framework.properties.GXCommonProperties;
-import com.geoxus.core.framework.validator.GXValidateJSONFieldService;
+import cn.maple.core.framework.validator.GXValidateJSONFieldService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import javax.validation.ConstraintValidatorContext;
 
 @Service
