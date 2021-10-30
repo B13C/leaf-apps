@@ -9,7 +9,7 @@
     <modules>
         <module>aggregate-server</module>
         <module>aggregate-core</module>
-        <module>aggregate-web-api</module>
+        <module>aggregate-webapi</module>
     </modules>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>

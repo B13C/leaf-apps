@@ -10,7 +10,7 @@
         <module>extra-api</module>
         <module>extra-server</module>
         <module>extra-core</module>
-        <module>extra-web-api</module>
+        <module>extra-webapi</module>
     </modules>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>

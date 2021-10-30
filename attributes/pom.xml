@@ -10,7 +10,7 @@
         <module>attributes-api</module>
         <module>attributes-server</module>
         <module>attributes-core</module>
-        <module>attributes-web-api</module>
+        <module>attributes-webapi</module>
     </modules>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
