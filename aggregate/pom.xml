@@ -76,6 +76,11 @@
                 <artifactId>leaf-base-canal</artifactId>
                 <version>${leaf.framework.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.maple.framework</groupId>
+                <artifactId>leaf-base-extension</artifactId>
+                <version>${leaf.framework.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
