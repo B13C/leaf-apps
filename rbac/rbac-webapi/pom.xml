@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>cn.maple.framework</groupId>
-            <artifactId>leaf-base-dubbo-zk</artifactId>
+            <artifactId>leaf-base-redisson</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.gaple</groupId>

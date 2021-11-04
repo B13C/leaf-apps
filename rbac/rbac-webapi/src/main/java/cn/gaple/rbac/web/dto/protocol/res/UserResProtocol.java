@@ -1,6 +1,6 @@
 package cn.gaple.rbac.web.dto.protocol.res;
 
-import cn.gaple.aggregate.web.service.impl.MyGXValidateJSONFieldService;
+import cn.gaple.rbac.web.service.impl.MyGXValidateJSONFieldService;
 import cn.maple.core.framework.annotation.GXMergeSingleField;
 import cn.maple.core.framework.annotation.GXValidateExtData;
 import cn.maple.core.framework.dto.protocol.res.GXBaseResProtocol;

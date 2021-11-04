@@ -8,8 +8,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @SpringBootApplication
 @GXEnableLeafFramework
 @EnableAspectJAutoProxy
-public class AggregateAPP {
+public class RbacAPP {
     public static void main(String[] args) {
-        SpringApplication.run(AggregateAPP.class, args);
+        SpringApplication.run(RbacAPP.class, args);
     }
 }
