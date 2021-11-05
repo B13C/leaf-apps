@@ -48,9 +48,9 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:/mappers/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: cn.maple.cn.maple.core.framework.entity;cn.maple.modules.*.entity
-  typeEnumsPackage: cn.maple.cn.maple.core.framework.entity.enums;cn.maple.modules.*.entity.enums
-  typeHandlersPackage: cn.maple.cn.maple.core.framework.handlers
+  type-aliases-package: cn.gaple.rbac
+  type-enums-package: cn.gaple.rbac
+  type-handlers-package: cn.maple.core.framework.handlers
   global-config:
     # 数据库相关配置
     db-config:

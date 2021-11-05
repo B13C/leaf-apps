@@ -1,6 +1,6 @@
 package cn.gaple.rbac.builder;
 
-import cn.gaple.rbac.constant.GXAdminRoleConstant;
+import cn.gaple.rbac.core.constant.GXAdminRoleConstant;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;

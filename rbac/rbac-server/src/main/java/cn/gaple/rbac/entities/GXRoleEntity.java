@@ -1,9 +1,9 @@
 package cn.gaple.rbac.entities;
 
-import cn.gaple.rbac.constant.GXRoleConstant;
+import cn.gaple.rbac.core.constant.GXRoleConstant;
 import cn.hutool.core.lang.Dict;
+import cn.maple.core.datasource.entity.GXBaseEntity;
 import cn.maple.core.framework.annotation.GXFieldComment;
-import cn.maple.core.framework.dto.GXBaseData;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXRoleEntity extends GXBaseData {
+public class GXRoleEntity extends GXBaseEntity {
     @GXFieldComment(zhDesc = "主键ID")
     private Integer id;
 

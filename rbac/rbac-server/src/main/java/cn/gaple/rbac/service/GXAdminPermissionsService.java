@@ -10,7 +10,7 @@ import cn.maple.core.datasource.service.GXDBBaseService;
 import java.util.Set;
 
 public interface GXAdminPermissionsService extends
-        GXDBBaseService<GXAdminPermissionsEntity, GXAdminPermissionsMapper, GXAdminPermissionsDao, GXAdminPermissionsResDto> {
+        GXDBBaseService<GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsDao, GXAdminPermissionsResDto> {
     /**
      * 通过管理员ID获取权限集
      *

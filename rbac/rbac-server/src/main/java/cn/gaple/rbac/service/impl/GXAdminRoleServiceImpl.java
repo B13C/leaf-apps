@@ -13,11 +13,11 @@ import java.util.Set;
 
 @Service
 public class GXAdminRoleServiceImpl extends
-        GXDBBaseServiceImpl<GXAdminRolesEntity, GXAdminRoleMapper, GXAdminRoleDao, GXAdminRoleResDto> implements GXAdminRoleService {
+        GXDBBaseServiceImpl<GXAdminRoleMapper, GXAdminRolesEntity, GXAdminRoleDao, GXAdminRoleResDto> implements GXAdminRoleService {
     @Override
     public Set<String> getAdminRoles(Long adminId) {
         final Dict condition = Dict.create().set("admin_id", adminId);
-        return getBaseMapper().getAdminRoles(condition);
+        return baseDao.getAdminRoles(condition);
     }
 
     public long create(GXAdminRolesEntity target, Dict param) {

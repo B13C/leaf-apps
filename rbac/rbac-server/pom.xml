@@ -29,6 +29,16 @@
             <artifactId>leaf-base-datasource</artifactId>
         </dependency>
         <dependency>
+            <groupId>cn.gaple</groupId>
+            <artifactId>rbac-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.gaple</groupId>
+            <artifactId>rbac-api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
             <version>${spring-boot.version}</version>

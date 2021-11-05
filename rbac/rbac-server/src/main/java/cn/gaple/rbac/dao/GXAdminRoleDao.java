@@ -1,11 +1,17 @@
 package cn.gaple.rbac.dao;
 
-import cn.maple.core.datasource.dao.GXBaseDao;
 import cn.gaple.rbac.dto.res.GXAdminRoleResDto;
 import cn.gaple.rbac.entities.GXAdminRolesEntity;
 import cn.gaple.rbac.mapper.GXAdminRoleMapper;
+import cn.hutool.core.lang.Dict;
+import cn.maple.core.datasource.dao.GXBaseDao;
 import org.springframework.stereotype.Repository;
 
+import java.util.Set;
+
 @Repository
-public class GXAdminRoleDao extends GXBaseDao<GXAdminRolesEntity, GXAdminRoleMapper, GXAdminRoleResDto> {
+public class GXAdminRoleDao extends GXBaseDao<GXAdminRoleMapper, GXAdminRolesEntity, GXAdminRoleResDto> {
+    public Set<String> getAdminRoles(Dict condition) {
+        return baseMapper.getAdminRoles(condition);
+    }
 }

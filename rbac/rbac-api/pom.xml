@@ -21,5 +21,10 @@
             <groupId>cn.maple.framework</groupId>
             <artifactId>leaf-base-framework</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.gaple</groupId>
+            <artifactId>rbac-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 </project>

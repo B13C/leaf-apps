@@ -1,6 +1,6 @@
 package cn.gaple.rbac.entities;
 
-import cn.gaple.rbac.constant.GXAdminConstant;
+import cn.gaple.rbac.core.constant.GXAdminConstant;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.entity.GXBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;

@@ -7,5 +7,9 @@ import cn.maple.core.datasource.dao.GXBaseDao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class GXAdminDao extends GXBaseDao<GXAdminEntity, GXAdminMapper, GXAdminResDto> {
+public class GXAdminDao extends GXBaseDao<GXAdminMapper, GXAdminEntity, GXAdminResDto> {
+    public Integer saveOrUpdate1(GXAdminEntity entity) {
+        saveOrUpdate(entity);
+        return 0;
+    }
 }

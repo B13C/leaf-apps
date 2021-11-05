@@ -1,6 +1,6 @@
 package cn.gaple.rbac.entities;
 
-import cn.gaple.rbac.constant.GXMenuPermissionsConstant;
+import cn.gaple.rbac.core.constant.GXMenuPermissionsConstant;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.entity.GXBaseEntity;
 import cn.maple.core.framework.annotation.GXFieldComment;

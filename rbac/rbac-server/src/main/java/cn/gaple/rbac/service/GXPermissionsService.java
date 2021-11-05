@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface GXPermissionsService extends
-        GXDBBaseService<GXPermissionsEntity, GXPermissionsMapper, GXPermissionsDao, GXPermissionsResDto> {
+        GXDBBaseService<GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto> {
     /**
      * 获取管理员的所有权限列表
      * 权限包括:

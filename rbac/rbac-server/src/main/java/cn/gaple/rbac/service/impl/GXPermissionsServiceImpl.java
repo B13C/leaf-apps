@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Service
 public class GXPermissionsServiceImpl
-        extends GXDBBaseServiceImpl<GXPermissionsEntity, GXPermissionsMapper, GXPermissionsDao, GXPermissionsResDto>
+        extends GXDBBaseServiceImpl<GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto>
         implements GXPermissionsService {
     @Resource
     private GXAdminPermissionsService adminPermissionsService;

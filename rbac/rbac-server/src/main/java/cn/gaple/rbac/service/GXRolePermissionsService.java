@@ -9,7 +9,7 @@ import cn.maple.core.datasource.service.GXDBBaseService;
 import java.util.Set;
 
 public interface GXRolePermissionsService extends
-        GXDBBaseService<GXRolePermissionsEntity, GXRolePermissionsMapper, GXRolePermissionsDao, GXRolePermissionsResDto> {
+        GXDBBaseService<GXRolePermissionsMapper, GXRolePermissionsEntity, GXRolePermissionsDao, GXRolePermissionsResDto> {
     /**
      * 通过管理员ID获取权限集
      *

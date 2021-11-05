@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Service
 public class GXRolePermissionsServiceImpl
-        extends GXDBBaseServiceImpl<GXRolePermissionsEntity, GXRolePermissionsMapper, GXRolePermissionsDao, GXRolePermissionsResDto>
+        extends GXDBBaseServiceImpl<GXRolePermissionsMapper, GXRolePermissionsEntity, GXRolePermissionsDao, GXRolePermissionsResDto>
         implements GXRolePermissionsService {
     /**
      * 通过管理员ID获取权限集
@@ -22,6 +22,6 @@ public class GXRolePermissionsServiceImpl
      */
     @Override
     public Set<String> getPermissionsByAdminId(Long adminId) {
-        return getBaseMapper().getPermissionsByAdminId(adminId);
+        return baseDao.getPermissionsByAdminId(adminId);
     }
 }

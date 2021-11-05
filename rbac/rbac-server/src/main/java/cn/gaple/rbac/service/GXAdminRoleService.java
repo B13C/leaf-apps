@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public interface GXAdminRoleService extends
-        GXDBBaseService<GXAdminRolesEntity, GXAdminRoleMapper, GXAdminRoleDao, GXAdminRoleResDto> {
+        GXDBBaseService<GXAdminRoleMapper, GXAdminRolesEntity, GXAdminRoleDao, GXAdminRoleResDto> {
     /**
      * 获取当前人的角色列表
      *

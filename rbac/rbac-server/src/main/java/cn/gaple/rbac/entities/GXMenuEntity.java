@@ -1,8 +1,7 @@
 package cn.gaple.rbac.entities;
 
-import cn.gaple.rbac.constant.GXMenuConstant;
-import cn.gaple.rbac.dto.inner.GXResourceTypeInnerReqDto;
-import cn.gaple.rbac.enums.GXMenuTypeEnum;
+import cn.gaple.rbac.core.constant.GXMenuConstant;
+import cn.gaple.rbac.core.enums.GXMenuTypeEnum;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.entity.GXBaseEntity;
 import cn.maple.core.framework.annotation.GXFieldComment;
@@ -32,8 +31,11 @@ public class GXMenuEntity extends GXBaseEntity implements Serializable {
     @GXFieldComment(zhDesc = "按钮类型")
     private GXMenuTypeEnum type;
 
-    @GXFieldComment(zhDesc = "菜单资源")
-    private GXResourceTypeInnerReqDto resource;
+    @GXFieldComment(zhDesc = "资源控制器名字")
+    private String controllerName;
+
+    @GXFieldComment(zhDesc = "资源控制器动作名字")
+    private String actionName;
 
     @GXFieldComment(zhDesc = "资源Code")
     private String code;

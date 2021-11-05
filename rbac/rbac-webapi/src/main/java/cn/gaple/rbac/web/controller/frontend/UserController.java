@@ -1,12 +1,12 @@
 package cn.gaple.rbac.web.controller.frontend;
 
-import cn.hutool.core.lang.Dict;
-import cn.maple.core.framework.annotation.GXRequestBody;
+import cn.gaple.rbac.web.dto.protocol.req.UserReqProtocol;
+import cn.gaple.rbac.web.service.TestService;
+import cn.maple.core.framework.annotation.GXValidated;
 import cn.maple.core.framework.util.GXResultUtils;
 import org.redisson.spring.cache.RedissonSpringCacheManager;
 import org.springframework.cache.Cache;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,10 +24,15 @@ public class UserController {
     @Resource
     private RedissonSpringCacheManager redissonSpringCacheManager;
 
+    @Resource
+    private TestService testService;
+
     @PostMapping("set-cache")
-    public GXResultUtils<String> setCache(@GXRequestBody @Validated Dict data) {
-        String key = data.getStr("key");
-        String value = data.getStr("value");
+    public GXResultUtils<String> setCache() {
+        String key = "key";
+        String value = "value";
+        UserReqProtocol userReqProtocol = new UserReqProtocol();
+        testService.test(userReqProtocol);
         caffeineCacheManager.getCache(CACHE_NAME).put(key, value);
         redissonSpringCacheManager.getCache(CACHE_NAME).put("AAAA", "风之伤AAAAAAAAAAAAAA");
         return GXResultUtils.ok("Hello World");
