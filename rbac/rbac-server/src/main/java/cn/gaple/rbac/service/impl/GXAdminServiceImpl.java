@@ -13,7 +13,7 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.crypto.SecureUtil;
 import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
-import cn.maple.core.framework.annotation.GXValidated;
+import cn.maple.core.framework.annotation.GXManualValidated;
 import cn.maple.core.framework.constant.GXTokenConstant;
 import cn.maple.core.framework.exception.GXBusinessException;
 import cn.maple.core.framework.util.GXTokenManagerUtils;
@@ -52,7 +52,7 @@ public class GXAdminServiceImpl extends GXDBBaseServiceImpl<GXAdminMapper, GXAdm
      * @return 管理员token
      */
     @Override
-    @GXValidated
+    @GXManualValidated
     public String login(GXAdminLoginReqDto loginReqDto) {
         GXAdminEntity adminEntity = new GXAdminEntity();
         adminEntity.setExt(Dict.create().set("aaaa", "aaaa"));
