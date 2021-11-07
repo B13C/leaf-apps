@@ -4,9 +4,9 @@ import cn.gaple.rbac.dto.res.GXTokenResDto;
 import cn.gaple.rbac.entities.GXTokenEntity;
 import cn.gaple.rbac.mapper.GXTokenMapper;
 import cn.maple.core.datasource.dao.GXBaseDao;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
+@Component
 public class GXTokenDao extends GXBaseDao<GXTokenMapper, GXTokenEntity, GXTokenResDto> {
     /**
      * 更具条件更新数据

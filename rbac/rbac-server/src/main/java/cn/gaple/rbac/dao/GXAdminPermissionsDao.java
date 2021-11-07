@@ -4,11 +4,12 @@ import cn.gaple.rbac.dto.res.GXAdminPermissionsResDto;
 import cn.gaple.rbac.entities.GXAdminPermissionsEntity;
 import cn.gaple.rbac.mapper.GXAdminPermissionsMapper;
 import cn.maple.core.datasource.dao.GXBaseDao;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
-@Repository
+@Component
 public class GXAdminPermissionsDao extends GXBaseDao<GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsResDto> {
     /**
      * 通过管理员ID获取权限集

@@ -2,7 +2,6 @@ package cn.gaple.rbac.web.controller.frontend;
 
 import cn.gaple.rbac.web.dto.protocol.req.UserReqProtocol;
 import cn.gaple.rbac.web.service.TestService;
-import cn.maple.core.framework.annotation.GXValidated;
 import cn.maple.core.framework.util.GXResultUtils;
 import org.redisson.spring.cache.RedissonSpringCacheManager;
 import org.springframework.cache.Cache;
