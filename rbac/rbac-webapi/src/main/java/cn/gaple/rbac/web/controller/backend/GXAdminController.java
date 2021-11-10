@@ -2,14 +2,18 @@ package cn.gaple.rbac.web.controller.backend;
 
 import cn.gaple.rbac.dto.req.GXAdminLoginReqDto;
 import cn.gaple.rbac.dto.req.GXAdminReqDto;
+import cn.gaple.rbac.dto.res.GXAdminResDto;
 import cn.gaple.rbac.service.GXAdminService;
 import cn.gaple.rbac.web.dto.protocol.req.GXAdminLoginReqProtocol;
 import cn.gaple.rbac.web.dto.protocol.req.GXAdminReqProtocol;
+import cn.gaple.rbac.web.dto.protocol.req.query.GXAdminQueryObjectProtocol;
 import cn.gaple.rbac.web.mapstruct.req.GXAdminLoginReqMapStruct;
 import cn.gaple.rbac.web.mapstruct.req.GXAdminWebReqMapStruct;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.controller.GXBaseController;
+import cn.maple.core.framework.dto.inner.req.GXQueryParamReqDto;
+import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
 import cn.maple.core.framework.util.GXResultUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,5 +55,12 @@ public class GXAdminController implements GXBaseController {
         GXAdminReqDto adminReqDto = adminWebReqMapStruct.sourceToTarget(reqProtocol);
         Integer adminId = adminService.saveOrUpdate(adminReqDto);
         return GXResultUtils.ok(Dict.create().set("adminId", adminId));
+    }
+
+    @PostMapping("/pagination")
+    public GXResultUtils<GXPaginationResDto<GXAdminResDto>> pagination(@GXRequestBody @Validated GXAdminQueryObjectProtocol queryObjectProtocol) {
+        GXQueryParamReqDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXQueryParamReqDto.class);
+        GXPaginationResDto<GXAdminResDto> pagination = adminService.pagination(paramReqDto);
+        return GXResultUtils.ok(pagination);
     }
 }

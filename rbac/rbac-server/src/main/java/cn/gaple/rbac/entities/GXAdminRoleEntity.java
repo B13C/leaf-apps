@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXAdminRolesEntity extends GXBaseEntity implements Serializable {
+public class GXAdminRoleEntity extends GXBaseEntity implements Serializable {
     @GXFieldComment(zhDesc = "主键ID")
     private Integer id;
 

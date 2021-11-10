@@ -5,7 +5,6 @@ import cn.gaple.rbac.entities.GXAdminPermissionsEntity;
 import cn.gaple.rbac.mapper.GXAdminPermissionsMapper;
 import cn.maple.core.datasource.dao.GXBaseDao;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 

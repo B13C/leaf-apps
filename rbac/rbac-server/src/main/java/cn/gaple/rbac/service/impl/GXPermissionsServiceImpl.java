@@ -1,9 +1,9 @@
 package cn.gaple.rbac.service.impl;
 
-import cn.gaple.rbac.dao.GXPermissionsDao;
+import cn.gaple.rbac.dto.req.GXPermissionsReqDto;
 import cn.gaple.rbac.dto.res.GXPermissionsResDto;
 import cn.gaple.rbac.entities.GXPermissionsEntity;
-import cn.gaple.rbac.mapper.GXPermissionsMapper;
+import cn.gaple.rbac.repository.GXPermissionsRepository;
 import cn.gaple.rbac.service.GXAdminPermissionsService;
 import cn.gaple.rbac.service.GXPermissionsService;
 import cn.gaple.rbac.service.GXRolePermissionsService;
@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Service
 public class GXPermissionsServiceImpl
-        extends GXDBBaseServiceImpl<GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto>
+        extends GXDBBaseServiceImpl<GXPermissionsRepository, GXPermissionsEntity, GXPermissionsReqDto, GXPermissionsResDto>
         implements GXPermissionsService {
     @Resource
     private GXAdminPermissionsService adminPermissionsService;

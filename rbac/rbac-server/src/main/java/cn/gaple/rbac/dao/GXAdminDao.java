@@ -8,8 +8,4 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GXAdminDao extends GXBaseDao<GXAdminMapper, GXAdminEntity, GXAdminResDto> {
-    public Integer saveOrUpdate1(GXAdminEntity entity) {
-        saveOrUpdate(entity);
-        return 0;
-    }
 }

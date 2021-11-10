@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class GXAdminRolesReqDto extends GXBaseReqDto {
+public class GXAdminRoleReqDto extends GXBaseReqDto {
     /**
      * 主键ID
      */

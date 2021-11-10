@@ -4,7 +4,7 @@ import cn.gaple.rbac.dto.req.ext.GXAdminExtReqDto;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.json.JSONUtil;
 import cn.maple.core.framework.dto.inner.req.GXBaseReqDto;
-import cn.maple.core.framework.util.GXValidatorUtil;
+import cn.maple.core.framework.util.GXValidatorUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -71,6 +71,6 @@ public class GXAdminReqDto extends GXBaseReqDto {
     @Override
     public void verify() {
         GXAdminExtReqDto adminExtReqDto = JSONUtil.toBean(JSONUtil.toJsonStr(ext), GXAdminExtReqDto.class);
-        GXValidatorUtil.validateEntity(adminExtReqDto);
+        GXValidatorUtils.validateEntity(adminExtReqDto);
     }
 }
