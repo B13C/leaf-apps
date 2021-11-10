@@ -8,7 +8,7 @@ import cn.gaple.rbac.mapper.GXTokenMapper;
 import cn.gaple.rbac.mapstruct.req.GXTokenReqMapStruct;
 import cn.gaple.rbac.service.GXTokenService;
 import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
-import cn.maple.core.framework.annotation.GXValidated;
+import cn.maple.core.framework.annotation.GXManualValidated;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,7 +25,8 @@ public class GXTokenServiceImpl extends GXDBBaseServiceImpl<GXTokenMapper, GXTok
      * @return token数据
      */
     @Override
-    public String saveOrUpdate(@GXValidated GXTokenReqDto reqDto) {
+    @GXManualValidated
+    public String saveOrUpdate(GXTokenReqDto reqDto) {
         GXTokenEntity entity = tokenMapStruct.sourceToTarget(reqDto);
         baseDao.saveOrUpdateByCondition(entity);
         return null;
