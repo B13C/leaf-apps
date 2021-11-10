@@ -12,7 +12,7 @@ import cn.gaple.rbac.web.mapstruct.req.GXAdminWebReqMapStruct;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.controller.GXBaseController;
-import cn.maple.core.framework.dto.inner.req.GXQueryParamReqDto;
+import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
 import cn.maple.core.framework.util.GXResultUtils;
 import org.springframework.validation.annotation.Validated;
@@ -59,7 +59,7 @@ public class GXAdminController implements GXBaseController {
 
     @PostMapping("/pagination")
     public GXResultUtils<GXPaginationResDto<GXAdminResDto>> pagination(@GXRequestBody @Validated GXAdminQueryObjectProtocol queryObjectProtocol) {
-        GXQueryParamReqDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXQueryParamReqDto.class);
+        GXBaseQueryParamReqDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXBaseQueryParamReqDto.class);
         GXPaginationResDto<GXAdminResDto> pagination = adminService.pagination(paramReqDto);
         return GXResultUtils.ok(pagination);
     }

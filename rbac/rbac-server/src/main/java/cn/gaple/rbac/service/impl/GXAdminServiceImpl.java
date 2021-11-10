@@ -11,7 +11,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
 import cn.maple.core.framework.annotation.GXManualValidated;
-import cn.maple.core.framework.dto.inner.req.GXQueryParamReqDto;
+import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -73,7 +73,7 @@ public class GXAdminServiceImpl extends GXDBBaseServiceImpl<GXAdminRepository, G
      * @return 分页对象
      */
     @Override
-    public GXPaginationResDto<GXAdminResDto> pagination(GXQueryParamReqDto queryParamReqDto) {
+    public GXPaginationResDto<GXAdminResDto> pagination(GXBaseQueryParamReqDto queryParamReqDto) {
         Integer page = queryParamReqDto.getPage();
         Integer pageSize = queryParamReqDto.getPageSize();
         Dict condition = queryParamReqDto.getQueryCondition();

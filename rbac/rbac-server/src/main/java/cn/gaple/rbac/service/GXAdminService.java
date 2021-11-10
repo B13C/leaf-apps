@@ -7,7 +7,7 @@ import cn.gaple.rbac.entities.GXAdminEntity;
 import cn.gaple.rbac.repository.GXAdminRepository;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.service.GXDBBaseService;
-import cn.maple.core.framework.dto.inner.req.GXQueryParamReqDto;
+import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
 
 public interface GXAdminService extends GXDBBaseService<GXAdminRepository, GXAdminEntity, GXAdminReqDto, GXAdminResDto> {
@@ -41,5 +41,5 @@ public interface GXAdminService extends GXDBBaseService<GXAdminRepository, GXAdm
      * @param queryParamReqDto 分类查询数据
      * @return 分页对象
      */
-    GXPaginationResDto<GXAdminResDto> pagination(GXQueryParamReqDto queryParamReqDto);
+    GXPaginationResDto<GXAdminResDto> pagination(GXBaseQueryParamReqDto queryParamReqDto);
 }
