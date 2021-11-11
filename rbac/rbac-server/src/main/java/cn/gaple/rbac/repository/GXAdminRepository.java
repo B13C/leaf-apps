@@ -119,7 +119,7 @@ public class GXAdminRepository implements GXBaseRepository<GXAdminEntity, GXAdmi
     public GXPaginationResDto<GXAdminResDto> paginate(Integer page, Integer pageSize, Table<String, String, Object> whereCondition, Set<String> columns) {
         IPage<GXAdminResDto> iPage = adminDao.constructPageObject(page, pageSize);
         List<GXAdminResDto> list = adminDao.getPageByCondition(iPage, GXAdminConstant.TABLE_NAME, columns, whereCondition);
-        return GXDBCommonUtils.convertPageToTarget(iPage, list);
+        return GXDBCommonUtils.convertPageToPaginationResDto(iPage, list);
     }
 
     /**

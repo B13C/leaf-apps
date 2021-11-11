@@ -7,13 +7,16 @@ import cn.gaple.rbac.service.GXAdminService;
 import cn.gaple.rbac.web.dto.protocol.req.GXAdminLoginReqProtocol;
 import cn.gaple.rbac.web.dto.protocol.req.GXAdminReqProtocol;
 import cn.gaple.rbac.web.dto.protocol.req.query.GXAdminQueryObjectProtocol;
-import cn.gaple.rbac.web.mapstruct.req.GXAdminLoginReqMapStruct;
-import cn.gaple.rbac.web.mapstruct.req.GXAdminWebReqMapStruct;
+import cn.gaple.rbac.web.dto.protocol.res.GXAdminResProtocol;
+import cn.gaple.rbac.web.mapstruct.req.GXAdminLoginReqProtocolMapStruct;
+import cn.gaple.rbac.web.mapstruct.req.GXAdminReqProtocolMapStruct;
+import cn.gaple.rbac.web.mapstruct.res.GXAdminResProtocolMapStruct;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.controller.GXBaseController;
 import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
+import cn.maple.core.framework.dto.protocol.res.GXPaginationResProtocol;
 import cn.maple.core.framework.util.GXResultUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +32,13 @@ import javax.annotation.Resource;
 @RequestMapping("/admin/backend")
 public class GXAdminController implements GXBaseController {
     @Resource
-    private GXAdminLoginReqMapStruct adminLoginReqMapStruct;
+    private GXAdminLoginReqProtocolMapStruct adminLoginReqMapStruct;
 
     @Resource
-    private GXAdminWebReqMapStruct adminWebReqMapStruct;
+    private GXAdminReqProtocolMapStruct adminReqMapStruct;
+
+    @Resource
+    private GXAdminResProtocolMapStruct adminResMapStruct;
 
     @Resource
     private GXAdminService adminService;
@@ -52,15 +58,16 @@ public class GXAdminController implements GXBaseController {
 
     @PostMapping("/save-or-update")
     public GXResultUtils<Dict> saveOrUpdate(@GXRequestBody @Validated GXAdminReqProtocol reqProtocol) {
-        GXAdminReqDto adminReqDto = adminWebReqMapStruct.sourceToTarget(reqProtocol);
+        GXAdminReqDto adminReqDto = adminReqMapStruct.sourceToTarget(reqProtocol);
         Integer adminId = adminService.saveOrUpdate(adminReqDto);
         return GXResultUtils.ok(Dict.create().set("adminId", adminId));
     }
 
     @PostMapping("/pagination")
-    public GXResultUtils<GXPaginationResDto<GXAdminResDto>> pagination(@GXRequestBody @Validated GXAdminQueryObjectProtocol queryObjectProtocol) {
+    public GXResultUtils<GXPaginationResProtocol<GXAdminResProtocol>> pagination(@GXRequestBody @Validated GXAdminQueryObjectProtocol queryObjectProtocol) {
         GXBaseQueryParamReqDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXBaseQueryParamReqDto.class);
         GXPaginationResDto<GXAdminResDto> pagination = adminService.pagination(paramReqDto);
-        return GXResultUtils.ok(pagination);
+        GXPaginationResProtocol<GXAdminResProtocol> paginationResProtocol = convertPaginationResToProtocol(pagination, GXAdminResDto.class, GXAdminResProtocol.class, adminResMapStruct);
+        return GXResultUtils.ok(paginationResProtocol);
     }
 }
