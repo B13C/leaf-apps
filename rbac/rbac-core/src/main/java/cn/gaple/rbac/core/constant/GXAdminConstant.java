@@ -15,6 +15,12 @@ public class GXAdminConstant {
     @GXFieldComment("数据源")
     public static final String DATASOURCE = "permissions";
 
+    @GXFieldComment("超级管理员标识")
+    public static final Integer ADMINISTRATOR = 1;
+
+    @GXFieldComment("非超级管理员标识")
+    public static final Integer NON_ADMINISTRATOR = 2;
+
     protected GXAdminConstant() {
     }
 }

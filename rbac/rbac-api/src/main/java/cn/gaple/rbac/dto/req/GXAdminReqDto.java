@@ -1,10 +1,7 @@
 package cn.gaple.rbac.dto.req;
 
-import cn.gaple.rbac.dto.req.ext.GXAdminExtReqDto;
-import cn.hutool.core.lang.Dict;
-import cn.hutool.json.JSONUtil;
+import cn.gaple.rbac.core.constant.GXAdminConstant;
 import cn.maple.core.framework.dto.inner.req.GXBaseReqDto;
-import cn.maple.core.framework.util.GXValidatorUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -52,25 +49,12 @@ public class GXAdminReqDto extends GXBaseReqDto {
     private Integer status;
 
     /**
-     * 是否超级管理员
-     * 1:是
-     * 2:否
+     * 是否超级管理员  1、是  2、否
      */
-    private Integer superAdmin = 2;
+    private Integer superAdmin = GXAdminConstant.NON_ADMINISTRATOR;
 
     /**
      * 租户ID
      */
     private String tenantId;
-
-    /**
-     * 扩展数据
-     */
-    private Dict ext;
-
-    @Override
-    public void verify() {
-        GXAdminExtReqDto adminExtReqDto = JSONUtil.toBean(JSONUtil.toJsonStr(ext), GXAdminExtReqDto.class);
-        GXValidatorUtils.validateEntity(adminExtReqDto);
-    }
 }

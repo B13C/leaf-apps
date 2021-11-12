@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
+import java.util.Objects;
 
 @Service
 public class GXAdminServiceImpl extends GXDBBaseServiceImpl<GXAdminRepository, GXAdminEntity, GXAdminReqDto, GXAdminResDto> implements GXAdminService {
@@ -78,7 +79,9 @@ public class GXAdminServiceImpl extends GXDBBaseServiceImpl<GXAdminRepository, G
         Integer pageSize = queryParamReqDto.getPageSize();
         Dict condition = queryParamReqDto.getQueryCondition();
         Table<String, String, Object> queryCondition = HashBasedTable.create();
-        queryCondition.put("username", "like", "'" + condition.getStr("username") + "%'");
+        if(Objects.nonNull(condition)) {
+            queryCondition.put("username", "like", "'" + condition.getStr("username") + "%'");
+        }
         return repository.paginate(page, pageSize, queryCondition, CollUtil.newHashSet("*"));
     }
 }
