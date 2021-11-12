@@ -4,6 +4,7 @@ import cn.gaple.rbac.core.constant.GXAdminConstant;
 import cn.gaple.rbac.dao.GXAdminDao;
 import cn.gaple.rbac.dto.res.GXAdminResDto;
 import cn.gaple.rbac.entities.GXAdminEntity;
+import cn.gaple.rbac.mapper.GXAdminMapper;
 import cn.gaple.rbac.mapstruct.req.GXAdminReqMapStruct;
 import cn.gaple.rbac.mapstruct.res.GXAdminResMapStruct;
 import cn.gaple.rbac.presenter.GXAdminPresenter;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public class GXAdminRepository implements GXBaseRepository<GXAdminEntity, GXAdminResDto> {
+public class GXAdminRepository extends GXBaseRepository<GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto> {
     @Resource
     private GXAdminDao adminDao;
 
@@ -91,19 +92,19 @@ public class GXAdminRepository implements GXBaseRepository<GXAdminEntity, GXAdmi
      * @return 列表
      */
     @Override
-    public List<GXAdminResDto> findByCondition(Set<String> columns, Table<String, String, Object> condition) {
-        return adminDao.getListByCondition(GXAdminConstant.TABLE_NAME, columns, condition);
+    public List<GXAdminResDto> findByCondition(String tableName, Table<String, String, Object> condition, Set<String> columns) {
+        return super.findByCondition(GXAdminConstant.TABLE_NAME, condition, columns);
     }
 
     /**
      * 根据条件获取数据
      *
-     * @param whereCondition 查询条件
+     * @param condition 查询条件
      * @return GXAdminResDto 返回数据
      */
     @Override
-    public GXAdminResDto findOneByCondition(Set<String> columns, Table<String, String, Object> whereCondition) {
-        return adminDao.getDataByCondition(GXAdminConstant.TABLE_NAME, columns, whereCondition);
+    public GXAdminResDto findOneByCondition(String tableName, Table<String, String, Object> condition, Set<String> columns) {
+        return adminDao.findOneByCondition(GXAdminConstant.TABLE_NAME, condition, columns);
     }
 
     /**
@@ -118,18 +119,31 @@ public class GXAdminRepository implements GXBaseRepository<GXAdminEntity, GXAdmi
     @Override
     public GXPaginationResDto<GXAdminResDto> paginate(Integer page, Integer pageSize, Table<String, String, Object> whereCondition, Set<String> columns) {
         IPage<GXAdminResDto> iPage = adminDao.constructPageObject(page, pageSize);
-        List<GXAdminResDto> list = adminDao.getPageByCondition(iPage, GXAdminConstant.TABLE_NAME, columns, whereCondition);
+        List<GXAdminResDto> list = adminDao.paginate(iPage, GXAdminConstant.TABLE_NAME, whereCondition, columns);
         return GXDBCommonUtils.convertPageToPaginationResDto(iPage, list);
     }
 
     /**
      * 根据条件删除
      *
-     * @param whereCondition 删除条件
+     * @param tableName 表名
+     * @param condition 删除条件
      * @return 影响行数
      */
     @Override
-    public Integer deleteWhere(Table<String, String, Object> whereCondition) {
+    public Integer deleteWhere(String tableName, Table<String, String, Object> condition) {
+        return 0;
+    }
+
+    /**
+     * 根据条件软(逻辑)删除
+     *
+     * @param tableName 表名
+     * @param condition 删除条件
+     * @return 影响行数
+     */
+    @Override
+    public Integer deleteSoftWhere(String tableName, Table<String, String, Object> condition) {
         return 0;
     }
 }
