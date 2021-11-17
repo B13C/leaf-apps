@@ -1,6 +1,6 @@
 package cn.gaple.extension;
 
-import cn.maple.core.framework.util.GXCommonUtils;
+import cn.maple.core.framework.util.GXLoggerUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 public class SomeExtensionB implements SomeExtPoint {
     @Override
     public void doSomeThing() {
-        GXCommonUtils.logInfo(log, "SomeExtensionB::doSomething", null);
+        GXLoggerUtils.logInfo(log, "SomeExtensionB::doSomething", null);
     }
 }

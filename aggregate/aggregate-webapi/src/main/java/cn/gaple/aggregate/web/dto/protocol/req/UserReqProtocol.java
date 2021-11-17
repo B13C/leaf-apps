@@ -1,8 +1,5 @@
 package cn.gaple.aggregate.web.dto.protocol.req;
 
-import cn.gaple.aggregate.web.service.impl.MyGXValidateJSONFieldService;
-import cn.maple.core.framework.annotation.GXMergeSingleField;
-import cn.maple.core.framework.annotation.GXValidateExtData;
 import cn.maple.core.framework.dto.protocol.req.GXBaseReqProtocol;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,13 +13,10 @@ public class UserReqProtocol extends GXBaseReqProtocol {
 
     private String password;
 
-    @GXMergeSingleField(tableName = "", fieldName = "author", service = MyGXValidateJSONFieldService.class)
     private String author;
 
-    @GXMergeSingleField(tableName = "", fieldName = "sub_title")
     private String subTitle;
 
-    @GXValidateExtData(tableName = "")
     private String ext;
 
     @Valid
