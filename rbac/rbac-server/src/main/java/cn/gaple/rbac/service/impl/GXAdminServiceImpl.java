@@ -25,7 +25,9 @@ import java.util.HashSet;
 import java.util.Objects;
 
 @Service
-public class GXAdminServiceImpl extends GXDBBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminDao, GXAdminEntity, GXAdminReqDto, GXAdminResDto> implements GXAdminService {
+public class GXAdminServiceImpl extends
+        GXDBBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer>
+        implements GXAdminService {
     @Resource
     private GXAdminReqMapStruct adminReqMapStruct;
 
@@ -88,6 +90,6 @@ public class GXAdminServiceImpl extends GXDBBaseServiceImpl<GXAdminRepository, G
         if (Objects.nonNull(condition)) {
             queryCondition.put("username", "like", "'" + condition.getStr("username") + "%'");
         }
-        return repository.paginate(page, pageSize, queryCondition, CollUtil.newHashSet("*"));
+        return repository.paginate(page, pageSize, queryCondition, "paginate", CollUtil.newHashSet("*"));
     }
 }

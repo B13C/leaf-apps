@@ -1,8 +1,10 @@
 package cn.gaple.rbac.service.impl;
 
+import cn.gaple.rbac.dao.GXTokenDao;
 import cn.gaple.rbac.dto.req.GXTokenReqDto;
 import cn.gaple.rbac.dto.res.GXTokenResDto;
 import cn.gaple.rbac.entities.GXTokenEntity;
+import cn.gaple.rbac.mapper.GXTokenMapper;
 import cn.gaple.rbac.mapstruct.req.GXTokenReqMapStruct;
 import cn.gaple.rbac.repository.GXTokenRepository;
 import cn.gaple.rbac.service.GXTokenService;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class GXTokenServiceImpl extends GXDBBaseServiceImpl<GXTokenRepository, GXTokenEntity, GXTokenReqDto, GXTokenResDto> implements GXTokenService {
+public class GXTokenServiceImpl extends GXDBBaseServiceImpl<GXTokenRepository, GXTokenMapper, GXTokenEntity, GXTokenDao, GXTokenResDto, Integer> implements GXTokenService {
     @Resource
     private GXTokenReqMapStruct tokenMapStruct;
 

@@ -12,7 +12,7 @@ import cn.maple.core.datasource.service.GXDBBaseService;
 import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
 
-public interface GXAdminService extends GXDBBaseService<GXAdminRepository, GXAdminMapper, GXAdminDao, GXAdminEntity, GXAdminReqDto, GXAdminResDto> {
+public interface GXAdminService extends GXDBBaseService<GXAdminRepository, GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer> {
     /**
      * 获取当前登录管理员的状态
      *

@@ -1,8 +1,9 @@
 package cn.gaple.rbac.service;
 
-import cn.gaple.rbac.dto.req.GXAdminPermissionsReqDto;
+import cn.gaple.rbac.dao.GXAdminPermissionsDao;
 import cn.gaple.rbac.dto.res.GXAdminPermissionsResDto;
 import cn.gaple.rbac.entities.GXAdminPermissionsEntity;
+import cn.gaple.rbac.mapper.GXAdminPermissionsMapper;
 import cn.gaple.rbac.repository.GXAdminPermissionsRepository;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.service.GXDBBaseService;
@@ -10,7 +11,7 @@ import cn.maple.core.datasource.service.GXDBBaseService;
 import java.util.Set;
 
 public interface GXAdminPermissionsService extends
-        GXDBBaseService<GXAdminPermissionsRepository, GXAdminPermissionsEntity, GXAdminPermissionsReqDto, GXAdminPermissionsResDto> {
+        GXDBBaseService<GXAdminPermissionsRepository, GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer> {
     /**
      * 通过管理员ID获取权限集
      *

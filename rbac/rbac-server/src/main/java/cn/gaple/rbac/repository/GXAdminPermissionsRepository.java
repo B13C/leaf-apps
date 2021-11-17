@@ -3,6 +3,7 @@ package cn.gaple.rbac.repository;
 import cn.gaple.rbac.dao.GXAdminPermissionsDao;
 import cn.gaple.rbac.dto.res.GXAdminPermissionsResDto;
 import cn.gaple.rbac.entities.GXAdminPermissionsEntity;
+import cn.gaple.rbac.mapper.GXAdminPermissionsMapper;
 import cn.maple.core.datasource.repository.GXBaseRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.Set;
 
 @Repository
-public class GXAdminPermissionsRepository implements GXBaseRepository<GXAdminPermissionsEntity, GXAdminPermissionsResDto> {
+public class GXAdminPermissionsRepository extends GXBaseRepository<GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer> {
     @Resource
     private GXAdminPermissionsDao adminPermissionsDao;
 
