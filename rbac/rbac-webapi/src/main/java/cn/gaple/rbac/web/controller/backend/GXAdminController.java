@@ -67,7 +67,8 @@ public class GXAdminController implements GXBaseController {
     public GXResultUtils<GXPaginationResProtocol<GXAdminResProtocol>> pagination(@GXRequestBody @Validated GXAdminQueryObjectProtocol queryObjectProtocol) {
         GXBaseQueryParamReqDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXBaseQueryParamReqDto.class);
         GXPaginationResDto<GXAdminResDto> pagination = adminService.pagination(paramReqDto);
-        GXPaginationResProtocol<GXAdminResProtocol> paginationResProtocol = convertPaginationResToProtocol(pagination, GXAdminResDto.class, GXAdminResProtocol.class, adminResMapStruct);
+        GXPaginationResProtocol<GXAdminResProtocol> paginationResProtocol =
+                convertPaginationResToProtocol(pagination, adminResMapStruct, GXAdminResDto.class, GXAdminResProtocol.class);
         return GXResultUtils.ok(paginationResProtocol);
     }
 }

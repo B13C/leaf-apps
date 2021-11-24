@@ -12,6 +12,7 @@ import cn.gaple.rbac.repository.GXAdminRepository;
 import cn.gaple.rbac.service.GXAdminService;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
+import cn.maple.core.datasource.constant.GXBaseBuilderConstant;
 import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
 import cn.maple.core.framework.annotation.GXManualValidated;
 import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
@@ -85,10 +86,10 @@ public class GXAdminServiceImpl extends
     public GXPaginationResDto<GXAdminResDto> pagination(GXBaseQueryParamReqDto queryParamReqDto) {
         Integer page = queryParamReqDto.getPage();
         Integer pageSize = queryParamReqDto.getPageSize();
-        Dict condition = queryParamReqDto.getQueryCondition();
+        Dict condition = queryParamReqDto.getCondition();
         Table<String, String, Object> queryCondition = HashBasedTable.create();
         if (Objects.nonNull(condition)) {
-            queryCondition.put("username", "like", "'" + condition.getStr("username") + "%'");
+            queryCondition.put("username", GXBaseBuilderConstant.RIGHT_LIKE, condition.getStr("username"));
         }
         return repository.paginate(page, pageSize, queryCondition, "paginate", CollUtil.newHashSet("*"));
     }
