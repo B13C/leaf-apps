@@ -42,7 +42,7 @@ spring:
   profiles:
     active: dev
   cache:
-    type: none
+    type: caffeine
 
 #mybatis
 mybatis-plus:
