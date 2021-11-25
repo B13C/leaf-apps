@@ -29,6 +29,10 @@
             <artifactId>leaf-base-datasource</artifactId>
         </dependency>
         <dependency>
+            <groupId>cn.maple.framework</groupId>
+            <artifactId>leaf-base-dubbo-nacos</artifactId>
+        </dependency>
+        <dependency>
             <groupId>cn.gaple</groupId>
             <artifactId>rbac-core</artifactId>
             <version>${project.parent.version}</version>

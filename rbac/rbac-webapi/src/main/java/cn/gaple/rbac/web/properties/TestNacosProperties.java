@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "user")
 @NacosPropertySource(dataId = "test.yml", groupId = "DEFAULT_GROUP", autoRefreshed = true)
 public class TestNacosProperties {
-    @NacosValue(value = "my", autoRefreshed = true)
+    //@NacosValue(value = "my", autoRefreshed = true)
     private String my;
 }
