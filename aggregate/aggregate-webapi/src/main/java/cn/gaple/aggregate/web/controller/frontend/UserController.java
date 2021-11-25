@@ -23,11 +23,12 @@ public class UserController {
     private LightTypeProperties lightTypeProperties;
 
     @PostMapping("index")
-    public GXResultUtils<String> hello(@GXRequestBody @Validated UserReqProtocol userReqProtocol) {
+    public GXResultUtils<Dict> hello(@GXRequestBody @Validated UserReqProtocol userReqProtocol) {
         System.out.println(userReqProtocol);
         System.out.println(userReqProtocol.getAuthor());
         String s = "";
-        List<Dict> types = lightTypeProperties.getTypes();
-        return GXResultUtils.ok("Hello World" + helloApi.hello("AAAABBBB"));
+        List<LightTypeProperties.LightTypeValueProperties> types = lightTypeProperties.getTypes();
+
+        return GXResultUtils.ok(Dict.create().set("call", "Hello World" + helloApi.hello("AAAABBBB")).set("lights", types));
     }
 }
