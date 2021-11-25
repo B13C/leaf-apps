@@ -7,4 +7,3 @@ nacos:
     data-id: application.yml
     type: yaml
     namespace: d3b4c585-ed74-4a95-a9df-75c72ebc10bb  # 需要设置  否则不能自动更新
-
