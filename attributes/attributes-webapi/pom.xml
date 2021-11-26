@@ -35,7 +35,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot-dependencies.version}</version>
                 <configuration>
-                    <mainClass>cn.gaple.AggregateAPP</mainClass>
+                    <mainClass>cn.gaple.AttributesAPP</mainClass>
                     <classifier>exec</classifier>
                     <layout>ZIP</layout>
                     <fork>true</fork>
