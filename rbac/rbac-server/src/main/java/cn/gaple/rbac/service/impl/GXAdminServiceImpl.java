@@ -72,7 +72,7 @@ public class GXAdminServiceImpl extends
         HashBasedTable<String, String, Object> condition = HashBasedTable.create();
         condition.put("username", "=", "'" + adminReqDto.getUsername() + "'");
         repository.checkRecordIsExists(GXAdminConstant.TABLE_NAME, condition);
-        Integer integer = repository.updateOrCreate(entity, null);
+        Integer integer = repository.updateOrCreate(entity, HashBasedTable.create());
         return integer;
     }
 

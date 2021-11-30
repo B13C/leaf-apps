@@ -10,6 +10,7 @@ import cn.gaple.rbac.repository.GXTokenRepository;
 import cn.gaple.rbac.service.GXTokenService;
 import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
 import cn.maple.core.framework.annotation.GXManualValidated;
+import com.google.common.collect.HashBasedTable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,7 +30,7 @@ public class GXTokenServiceImpl extends GXDBBaseServiceImpl<GXTokenRepository, G
     @GXManualValidated
     public String saveOrUpdate(GXTokenReqDto reqDto) {
         GXTokenEntity entity = tokenMapStruct.sourceToTarget(reqDto);
-        repository.updateOrCreate(entity, null);
+        repository.updateOrCreate(entity, HashBasedTable.create());
         return null;
     }
 }

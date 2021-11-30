@@ -47,6 +47,11 @@
             </dependency>
             <dependency>
                 <groupId>cn.maple.framework</groupId>
+                <artifactId>leaf-base-dubbo-sentinel</artifactId>
+                <version>${leaf.framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.maple.framework</groupId>
                 <artifactId>leaf-base-datasource</artifactId>
                 <version>${leaf.framework.version}</version>
             </dependency>

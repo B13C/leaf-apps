@@ -23,6 +23,10 @@
             <artifactId>leaf-base-framework</artifactId>
         </dependency>
         <dependency>
+            <groupId>cn.maple.framework</groupId>
+            <artifactId>leaf-base-dubbo-sentinel</artifactId>
+        </dependency>
+        <dependency>
             <groupId>cn.gaple</groupId>
             <artifactId>aggregate-server</artifactId>
             <version>1.0.0-SNAPSHOT</version>
