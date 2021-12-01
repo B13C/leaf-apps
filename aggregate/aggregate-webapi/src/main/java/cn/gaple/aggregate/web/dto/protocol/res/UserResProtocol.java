@@ -1,5 +1,6 @@
 package cn.gaple.aggregate.web.dto.protocol.res;
 
+import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.dto.protocol.res.GXBaseResProtocol;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,5 +16,5 @@ public class UserResProtocol extends GXBaseResProtocol {
 
     private String subTitle;
 
-    private String ext;
+    private Dict ext;
 }

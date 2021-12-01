@@ -28,7 +28,7 @@ public class UserController {
         System.out.println(userReqProtocol.getAuthor());
         String s = "";
         List<LightTypeProperties.LightTypeValueProperties> types = lightTypeProperties.getTypes();
-
+        helloApi.hello("aaaaa");
         return GXResultUtils.ok(Dict.create().set("call", "Hello World" + helloApi.hello("AAAABBBB")).set("lights", types));
     }
 }

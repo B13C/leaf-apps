@@ -4,6 +4,6 @@ nacos:
     auto-refresh: true
     bootstrap:
       enable: true  # 需要配置data-id 和 type  否则会报错
-    data-id: application.yml
+    data-id: application-aggregate.yml
     type: yaml
-    namespace: d3b4c585-ed74-4a95-a9df-75c72ebc10bb  # 需要设置  否则不能自动更新
+    namespace: fa8dc755-ba13-4fa3-b926-186a56a7bf29  # 需要设置  否则不能自动更新

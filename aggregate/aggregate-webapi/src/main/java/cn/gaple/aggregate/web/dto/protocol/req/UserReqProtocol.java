@@ -1,5 +1,6 @@
 package cn.gaple.aggregate.web.dto.protocol.req;
 
+import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.dto.protocol.req.GXBaseReqProtocol;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +18,7 @@ public class UserReqProtocol extends GXBaseReqProtocol {
 
     private String subTitle;
 
-    private String ext;
+    private Dict ext;
 
     @Valid
     private UserDetailProtocol userDetail;

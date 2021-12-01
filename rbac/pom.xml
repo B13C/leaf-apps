@@ -47,7 +47,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.maple.framework</groupId>
-                <artifactId>leaf-base-dubbo-sentinel</artifactId>
+                <artifactId>leaf-base-dubbo-nacos-sentinel</artifactId>
                 <version>${leaf.framework.version}</version>
             </dependency>
             <dependency>
