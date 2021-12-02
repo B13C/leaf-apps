@@ -14,15 +14,7 @@ import javax.annotation.Resource;
 
 @Repository
 public class GXAdminRepository extends GXBaseRepository<GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer> {
-    @Resource
-    private GXAdminDao adminDao;
-
-    @Resource
-    private GXAdminReqMapStruct adminReqMapStruct;
-
-    @Resource
-    private GXAdminResMapStruct adminResMapStruct;
-
-    @Resource
-    private GXAdminPresenter adminPresenter;
+    public void test() {
+        baseDao.test();
+    }
 }

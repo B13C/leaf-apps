@@ -6,6 +6,7 @@ import cn.gaple.rbac.api.HelloApi;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.util.GXResultUtils;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,13 +23,19 @@ public class UserController {
     @Resource
     private LightTypeProperties lightTypeProperties;
 
+    /*public GXResultUtils<Dict> defaultFallback(UserReqProtocol userReqProtocol, Throwable e) {
+        System.out.println("Go to default fallback");
+        return GXResultUtils.ok(Dict.create());
+    }*/
+
     @PostMapping("index")
+    @SentinelResource(defaultFallback = "defaultFallback", fallback = "defaultFallback", blockHandler = "defaultFallback")
     public GXResultUtils<Dict> hello(@GXRequestBody @Validated UserReqProtocol userReqProtocol) {
         System.out.println(userReqProtocol);
         System.out.println(userReqProtocol.getAuthor());
         String s = "";
         List<LightTypeProperties.LightTypeValueProperties> types = lightTypeProperties.getTypes();
-        helloApi.hello("aaaaa");
+        helloApi.hello("aaaaaAAA");
         return GXResultUtils.ok(Dict.create().set("call", "Hello World" + helloApi.hello("AAAABBBB")).set("lights", types));
     }
 }

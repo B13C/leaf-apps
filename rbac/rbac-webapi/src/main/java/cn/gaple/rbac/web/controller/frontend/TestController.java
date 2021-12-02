@@ -1,5 +1,6 @@
 package cn.gaple.rbac.web.controller.frontend;
 
+import cn.gaple.rbac.service.MyTestService;
 import cn.gaple.rbac.web.properties.TestNacosProperties;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.util.GXResultUtils;
@@ -13,9 +14,12 @@ public class TestController {
     @Resource
     private TestNacosProperties testProperties;
 
+    @Resource
+    private MyTestService myTestService;
+
     @GetMapping("test")
     public GXResultUtils<Dict> testNacos() {
-        String name = testProperties.getMy();
-        return GXResultUtils.ok(Dict.create().set("name", name).set("aa", "枫叶思源"));
+        myTestService.test();
+        return GXResultUtils.ok(Dict.create().set("name", "AAAA").set("aa", "枫叶思源"));
     }
 }
