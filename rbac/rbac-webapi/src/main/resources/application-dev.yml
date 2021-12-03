@@ -19,4 +19,16 @@ spring:
       - __DEFAULT__
       - common
 
+nacos:
+  config:
+    server-addr: 192.168.56.101:8848
+    auto-refresh: true
+    namespace: fa8dc755-ba13-4fa3-b926-186a56a7bf29
+    bootstrap:
+      enable: true
+      log-enable: true
+    type: yaml
+    data-ids: application-rbac.yml
+    group: RBAC_GROUP
+
 debug: false

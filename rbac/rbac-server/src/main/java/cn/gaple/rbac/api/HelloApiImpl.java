@@ -16,7 +16,7 @@ public class HelloApiImpl implements HelloApi {
 
     @Override
     public String hello(String str) {
-        GXLoggerUtils.logInfo(log, "AAA", Dict.create());
+        GXLoggerUtils.logInfo(log, "RABC功能", Dict.create());
         String traceId = GXTraceIdContextUtils.getTraceId();
         String s = testApi.helloApi();
         return "我的测试" + str + " : " + traceId + ":" + s;
