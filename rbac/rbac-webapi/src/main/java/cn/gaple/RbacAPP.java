@@ -11,6 +11,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 //@EnableNacos(globalProperties = @NacosProperties(serverAddr = "${nacos.server-addr:192.168.1.245:8848}"))
 public class RbacAPP {
     public static void main(String[] args) {
+        System.setProperty("nacos.logging.default.config.enabled", "false");
         SpringApplication.run(RbacAPP.class, args);
     }
 }

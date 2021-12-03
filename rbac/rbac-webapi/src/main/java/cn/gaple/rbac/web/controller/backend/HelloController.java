@@ -7,7 +7,7 @@ import cn.gaple.rbac.repository.GXAdminRepository;
 import cn.gaple.rbac.web.dto.protocol.TestProtocol;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.constant.GXBaseBuilderConstant;
+import cn.maple.core.datasource.constant.GXBuilderConstant;
 import cn.maple.core.datasource.dto.inner.GXDBQueryParamInnerDto;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.controller.GXBaseController;
@@ -15,10 +15,11 @@ import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
 import cn.maple.core.framework.util.GXResultUtils;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 
 /**
@@ -57,7 +58,7 @@ public class HelloController implements GXBaseController {
         //GXPaginationResDto<GXAdminResDto> paginate = adminRepository.paginate(queryInnerDto);
         //List<GXAdminResDto> byCondition = adminRepository.findByCondition(queryInnerDto);
         //List<Dict> singleFieldByCondition = adminRepository.findByCondition(queryInnerDto, Dict.class);
-        condition.put(GXAdminConstant.PRIMARY_KEY, GXBaseBuilderConstant.NUMBER_EQ, 11);
+        condition.put(GXAdminConstant.PRIMARY_KEY, GXBuilderConstant.NUMBER_EQ, 11);
 
         //adminRepository.updateFieldByCondition("s_admin", Dict.create().set("username", "AAAA").set("nickname", "我的测试"), condition);
 /*        List<Dict> dataList = CollUtil.newArrayList();

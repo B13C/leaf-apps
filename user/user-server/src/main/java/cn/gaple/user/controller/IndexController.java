@@ -1,17 +1,15 @@
 package cn.gaple.user.controller;
 
-import com.geoxus.core.framework.util.GXResultUtil;
+import cn.maple.core.framework.util.GXResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/index/frontend1/")
 public class IndexController {
     @GetMapping("index")
-    public GXResultUtil<String> index() {
-        return GXResultUtil.ok("SSO , Hello World");
+    public GXResultUtils<String> index() {
+        return GXResultUtils.ok("SSO , Hello World");
     }
 }

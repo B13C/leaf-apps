@@ -6,7 +6,7 @@ import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.ReUtil;
 import cn.maple.core.datasource.builder.GXBaseBuilder;
-import cn.maple.core.datasource.constant.GXBaseBuilderConstant;
+import cn.maple.core.datasource.constant.GXBuilderConstant;
 import cn.maple.core.framework.constant.GXCommonConstant;
 import org.apache.ibatis.jdbc.SQL;
 
@@ -22,9 +22,9 @@ public class GXAdminRoleBuilder implements GXBaseBuilder {
                 .INNER_JOIN("role ON role.id = admin_role.role_id");
         condition.forEach((column, value1) -> {
             final String value = Convert.toStr(value1);
-            String template = "{} " + GXBaseBuilderConstant.STR_EQ;
+            String template = "{} " + GXBuilderConstant.STR_EQ;
             if (ReUtil.isMatch(GXCommonConstant.DIGITAL_REGULAR_EXPRESSION, value)) {
-                template = "{} " + GXBaseBuilderConstant.NUMBER_EQ;
+                template = "{} " + GXBuilderConstant.NUMBER_EQ;
             }
             sql.WHERE(CharSequenceUtil.format(template, column, value));
         });

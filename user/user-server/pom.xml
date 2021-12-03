@@ -18,22 +18,18 @@
     </properties>
 
     <dependencies>
-       <!-- <dependency>
-            <groupId>com.geoxus.framework</groupId>
-            <artifactId>leaf-base-framework</artifactId>
-        </dependency>-->
         <dependency>
-            <groupId>com.geoxus.framework</groupId>
-            <artifactId>leaf-base-dubbo-zk</artifactId>
+            <groupId>cn.maple.framework</groupId>
+            <artifactId>leaf-base-dubbo-nacos</artifactId>
         </dependency>
- <!--       <dependency>
-            <groupId>com.geoxus.framework</groupId>
+        <dependency>
+            <groupId>cn.maple.framework</groupId>
             <artifactId>leaf-base-redisson</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.geoxus.framework</groupId>
+            <groupId>cn.maple.framework</groupId>
             <artifactId>leaf-base-datasource</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>cn.gaple</groupId>
             <artifactId>user-core</artifactId>

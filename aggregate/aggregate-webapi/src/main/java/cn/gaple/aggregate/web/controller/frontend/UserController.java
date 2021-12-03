@@ -6,7 +6,6 @@ import cn.gaple.rbac.api.HelloApi;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.util.GXResultUtils;
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +28,6 @@ public class UserController {
     }*/
 
     @PostMapping("index")
-    @SentinelResource(defaultFallback = "defaultFallback", fallback = "defaultFallback", blockHandler = "defaultFallback")
     public GXResultUtils<Dict> hello(@GXRequestBody @Validated UserReqProtocol userReqProtocol) {
         System.out.println(userReqProtocol);
         System.out.println(userReqProtocol.getAuthor());

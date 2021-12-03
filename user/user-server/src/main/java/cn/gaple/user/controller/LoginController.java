@@ -1,7 +1,7 @@
 package cn.gaple.user.controller;
 
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.framework.util.GXResultUtil;
+import cn.maple.core.framework.util.GXResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +15,8 @@ public class LoginController {
 
 
     @GetMapping("login")
-    public GXResultUtil<Dict> login(HttpServletRequest request, HttpServletResponse response) {
+    public GXResultUtils<Dict> login(HttpServletRequest request, HttpServletResponse response) {
         String token = "";
-        return GXResultUtil.ok(Dict.create().set("token", token));
+        return GXResultUtils.ok(Dict.create().set("token", token));
     }
 }
