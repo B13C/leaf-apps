@@ -13,10 +13,10 @@ import cn.gaple.rbac.service.GXAdminService;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.constant.GXBuilderConstant;
-import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
+import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import cn.maple.core.framework.annotation.GXManualValidated;
-import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
-import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
+import cn.maple.core.framework.dto.req.GXBaseQueryParamReqDto;
+import cn.maple.core.framework.dto.res.GXPaginationResDto;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.springframework.stereotype.Service;
@@ -26,9 +26,7 @@ import java.util.HashSet;
 import java.util.Objects;
 
 @Service
-public class GXAdminServiceImpl extends
-        GXDBBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer>
-        implements GXAdminService {
+public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer> implements GXAdminService {
     @Resource
     private GXAdminReqMapStruct adminReqMapStruct;
 

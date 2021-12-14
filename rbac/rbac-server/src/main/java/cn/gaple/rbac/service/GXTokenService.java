@@ -6,9 +6,9 @@ import cn.gaple.rbac.dto.res.GXTokenResDto;
 import cn.gaple.rbac.entities.GXTokenEntity;
 import cn.gaple.rbac.mapper.GXTokenMapper;
 import cn.gaple.rbac.repository.GXTokenRepository;
-import cn.maple.core.datasource.service.GXDBBaseService;
+import cn.maple.core.datasource.service.GXMyBatisBaseService;
 
-public interface GXTokenService extends GXDBBaseService<GXTokenRepository, GXTokenMapper, GXTokenEntity, GXTokenDao, GXTokenResDto, Integer> {
+public interface GXTokenService extends GXMyBatisBaseService<GXTokenRepository, GXTokenMapper, GXTokenEntity, GXTokenDao, GXTokenResDto, Integer> {
     /**
      * 创建或者更新用户token
      *

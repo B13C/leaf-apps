@@ -5,18 +5,18 @@ import cn.gaple.rbac.entities.GXAdminEntity;
 import cn.gaple.rbac.mapper.GXAdminMapper;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.constant.GXBuilderConstant;
-import cn.maple.core.datasource.dao.GXBaseDao;
-import cn.maple.core.datasource.dto.inner.GXDBQueryParamInnerDto;
+import cn.maple.core.datasource.dao.GXMyBatisDao;
+import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GXAdminDao extends GXBaseDao<GXAdminMapper, GXAdminEntity, GXAdminResDto> {
+public class GXAdminDao extends GXMyBatisDao<GXAdminMapper, GXAdminEntity, GXAdminResDto, Integer> {
     public void test() {
         HashBasedTable<String, String, Object> ccc = HashBasedTable.create();
         ccc.put("username", GXBuilderConstant.LIKE, "AAAA");
-        GXDBQueryParamInnerDto admin = GXDBQueryParamInnerDto.builder()
+        GXBaseQueryParamInnerDto admin = GXBaseQueryParamInnerDto.builder()
                 .tableName("s_admin")
                 .tableNameAlias("aaaa")
                 .condition(ccc)
@@ -42,7 +42,7 @@ public class GXAdminDao extends GXBaseDao<GXAdminMapper, GXAdminEntity, GXAdminR
         HashBasedTable<String, String, Object> condition = HashBasedTable.create();
         condition.put("b.name", GXBuilderConstant.RIGHT_LIKE, "aaaa");
         condition.put("c.name", GXBuilderConstant.LEFT_LIKE, "bbbbb");
-        GXDBQueryParamInnerDto paramInnerDto = GXDBQueryParamInnerDto.builder()
+        GXBaseQueryParamInnerDto paramInnerDto = GXBaseQueryParamInnerDto.builder()
                 .tableName("a")
                 .joins(joins)
                 .condition(condition)

@@ -7,11 +7,11 @@ import cn.gaple.rbac.mapper.GXAdminRoleMapper;
 import cn.gaple.rbac.repository.GXAdminRoleRepository;
 import cn.gaple.rbac.service.GXAdminRoleService;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
+import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GXAdminRoleServiceImpl extends GXDBBaseServiceImpl<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleEntity, GXAdminRoleDao, GXAdminRoleResDto, Integer>
+public class GXAdminRoleServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleEntity, GXAdminRoleDao, GXAdminRoleResDto, Integer>
         implements GXAdminRoleService {
     /**
      * 创建数据

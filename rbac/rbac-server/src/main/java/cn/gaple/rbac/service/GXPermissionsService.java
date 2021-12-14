@@ -5,14 +5,14 @@ import cn.gaple.rbac.dto.res.GXPermissionsResDto;
 import cn.gaple.rbac.entities.GXPermissionsEntity;
 import cn.gaple.rbac.mapper.GXPermissionsMapper;
 import cn.gaple.rbac.repository.GXPermissionsRepository;
-import cn.maple.core.datasource.service.GXDBBaseService;
+import cn.maple.core.datasource.service.GXMyBatisBaseService;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public interface GXPermissionsService extends GXDBBaseService<GXPermissionsRepository, GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto, Integer> {
+public interface GXPermissionsService extends GXMyBatisBaseService<GXPermissionsRepository, GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto, Integer> {
     /**
      * 获取管理员的所有权限列表
      * 权限包括:

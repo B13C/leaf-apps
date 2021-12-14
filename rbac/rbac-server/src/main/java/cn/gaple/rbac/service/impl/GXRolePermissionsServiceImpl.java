@@ -6,15 +6,13 @@ import cn.gaple.rbac.entities.GXRolePermissionsEntity;
 import cn.gaple.rbac.mapper.GXRolePermissionsMapper;
 import cn.gaple.rbac.repository.GXRolePermissionsRepository;
 import cn.gaple.rbac.service.GXRolePermissionsService;
-import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
+import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class GXRolePermissionsServiceImpl
-        extends GXDBBaseServiceImpl<GXRolePermissionsRepository, GXRolePermissionsMapper, GXRolePermissionsEntity, GXRolePermissionsDao, GXRolePermissionsResDto, Integer>
-        implements GXRolePermissionsService {
+public class GXRolePermissionsServiceImpl extends GXMyBatisBaseServiceImpl<GXRolePermissionsRepository, GXRolePermissionsMapper, GXRolePermissionsEntity, GXRolePermissionsDao, GXRolePermissionsResDto, Integer> implements GXRolePermissionsService {
     /**
      * 通过管理员ID获取权限集
      *

@@ -1,7 +1,7 @@
 package cn.gaple.rbac.dto.res;
 
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.framework.dto.inner.res.GXBaseResDto;
+import cn.maple.core.framework.dto.res.GXBaseResDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

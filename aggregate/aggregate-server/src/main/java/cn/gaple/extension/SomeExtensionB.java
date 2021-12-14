@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 public class SomeExtensionB implements SomeExtPoint {
     @Override
     public void doSomeThing() {
-        GXLoggerUtils.logInfo(log, "SomeExtensionB::doSomething", null);
+        GXLoggerUtils.logInfo(log, "SomeExtensionB::doSomething");
     }
 }

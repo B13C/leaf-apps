@@ -9,7 +9,7 @@ import cn.gaple.rbac.service.GXAdminPermissionsService;
 import cn.gaple.rbac.service.GXPermissionsService;
 import cn.gaple.rbac.service.GXRolePermissionsService;
 import cn.hutool.core.collection.CollUtil;
-import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
+import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,9 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class GXPermissionsServiceImpl
-        extends GXDBBaseServiceImpl<GXPermissionsRepository, GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto, Integer>
-        implements GXPermissionsService {
+public class GXPermissionsServiceImpl extends GXMyBatisBaseServiceImpl<GXPermissionsRepository, GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto, Integer> implements GXPermissionsService {
     @Resource
     private GXAdminPermissionsService adminPermissionsService;
 

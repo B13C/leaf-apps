@@ -8,7 +8,7 @@ import cn.gaple.rbac.mapper.GXTokenMapper;
 import cn.gaple.rbac.mapstruct.req.GXTokenReqMapStruct;
 import cn.gaple.rbac.repository.GXTokenRepository;
 import cn.gaple.rbac.service.GXTokenService;
-import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
+import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import cn.maple.core.framework.annotation.GXManualValidated;
 import com.google.common.collect.HashBasedTable;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class GXTokenServiceImpl extends GXDBBaseServiceImpl<GXTokenRepository, GXTokenMapper, GXTokenEntity, GXTokenDao, GXTokenResDto, Integer> implements GXTokenService {
+public class GXTokenServiceImpl extends GXMyBatisBaseServiceImpl<GXTokenRepository, GXTokenMapper, GXTokenEntity, GXTokenDao, GXTokenResDto, Integer> implements GXTokenService {
     @Resource
     private GXTokenReqMapStruct tokenMapStruct;
 

@@ -8,10 +8,10 @@ import cn.gaple.rbac.web.dto.protocol.TestProtocol;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.constant.GXBuilderConstant;
-import cn.maple.core.datasource.dto.inner.GXDBQueryParamInnerDto;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.controller.GXBaseController;
-import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
+import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
+import cn.maple.core.framework.dto.res.GXPaginationResDto;
 import cn.maple.core.framework.util.GXResultUtils;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -49,12 +49,7 @@ public class HelloController implements GXBaseController {
         condition.put("created_at", GXBaseBuilderConstant.NUMBER_LE, "11111");*/
         //condition.put("username", GXBaseBuilderConstant.RIGHT_LIKE, "jetty");
 
-        GXDBQueryParamInnerDto queryInnerDto = GXDBQueryParamInnerDto.builder()
-                .columns(CollUtil.newHashSet("*"))
-                .tableName("s_admin")
-                .columns(CollUtil.newHashSet("username"))
-                .groupByField(CollUtil.newHashSet("nickname"))
-                .orderByField(Dict.create().set("username", "asc").set("nickname", "desc")).build();
+        GXBaseQueryParamInnerDto queryInnerDto = GXBaseQueryParamInnerDto.builder().columns(CollUtil.newHashSet("*")).tableName("s_admin").columns(CollUtil.newHashSet("username")).groupByField(CollUtil.newHashSet("nickname")).orderByField(Dict.create().set("username", "asc").set("nickname", "desc")).build();
         //GXPaginationResDto<GXAdminResDto> paginate = adminRepository.paginate(queryInnerDto);
         //List<GXAdminResDto> byCondition = adminRepository.findByCondition(queryInnerDto);
         //List<Dict> singleFieldByCondition = adminRepository.findByCondition(queryInnerDto, Dict.class);

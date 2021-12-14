@@ -2,7 +2,7 @@ package cn.gaple.rbac.entities;
 
 import cn.gaple.rbac.core.constant.GXAdminConstant;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.entity.GXBaseEntity;
+import cn.maple.core.datasource.po.GXBasePO;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
@@ -10,13 +10,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-
 @TableName(GXAdminConstant.TABLE_NAME)
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXAdminEntity extends GXBaseEntity implements Serializable {
+public class GXAdminEntity extends GXBasePO {
     /**
      * 主键ID
      */

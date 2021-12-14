@@ -7,15 +7,13 @@ import cn.gaple.rbac.mapper.GXAdminPermissionsMapper;
 import cn.gaple.rbac.repository.GXAdminPermissionsRepository;
 import cn.gaple.rbac.service.GXAdminPermissionsService;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.service.impl.GXDBBaseServiceImpl;
+import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class GXAdminPermissionsServiceImpl extends
-        GXDBBaseServiceImpl<GXAdminPermissionsRepository, GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer>
-        implements GXAdminPermissionsService {
+public class GXAdminPermissionsServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminPermissionsRepository, GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer> implements GXAdminPermissionsService {
     /**
      * 通过管理员ID获取权限集
      *

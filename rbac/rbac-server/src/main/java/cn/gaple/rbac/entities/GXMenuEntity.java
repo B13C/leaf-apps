@@ -3,7 +3,7 @@ package cn.gaple.rbac.entities;
 import cn.gaple.rbac.core.constant.GXMenuConstant;
 import cn.gaple.rbac.core.enums.GXMenuTypeEnum;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.entity.GXBaseEntity;
+import cn.maple.core.datasource.po.GXBasePO;
 import cn.maple.core.framework.annotation.GXFieldComment;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,13 +12,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
-
 @TableName(GXMenuConstant.TABLE_NAME)
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXMenuEntity extends GXBaseEntity implements Serializable {
+public class GXMenuEntity extends GXBasePO {
     @GXFieldComment(zhDesc = "主键ID")
     private Integer id;
 

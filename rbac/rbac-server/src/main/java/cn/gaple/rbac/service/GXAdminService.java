@@ -8,11 +8,11 @@ import cn.gaple.rbac.entities.GXAdminEntity;
 import cn.gaple.rbac.mapper.GXAdminMapper;
 import cn.gaple.rbac.repository.GXAdminRepository;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.service.GXDBBaseService;
-import cn.maple.core.framework.dto.inner.req.GXBaseQueryParamReqDto;
-import cn.maple.core.framework.dto.inner.res.GXPaginationResDto;
+import cn.maple.core.datasource.service.GXMyBatisBaseService;
+import cn.maple.core.framework.dto.req.GXBaseQueryParamReqDto;
+import cn.maple.core.framework.dto.res.GXPaginationResDto;
 
-public interface GXAdminService extends GXDBBaseService<GXAdminRepository, GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer> {
+public interface GXAdminService extends GXMyBatisBaseService<GXAdminRepository, GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer> {
     /**
      * 获取当前登录管理员的状态
      *
