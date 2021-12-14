@@ -11,7 +11,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 public class TestApiImpl implements TestApi {
     @Override
     public String helloApi() {
-        GXLoggerUtils.logInfo(log, "BBBBB", null);
+        GXLoggerUtils.logInfo(log, "BBBBB");
         return "USER枫叶思源的测试API" + " : " + GXTraceIdContextUtils.getTraceId();
     }
 }
