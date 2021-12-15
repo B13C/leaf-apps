@@ -2,7 +2,7 @@ package cn.gaple.rbac.service.impl;
 
 import cn.gaple.rbac.dao.GXAdminPermissionsDao;
 import cn.gaple.rbac.dto.res.GXAdminPermissionsResDto;
-import cn.gaple.rbac.entities.GXAdminPermissionsEntity;
+import cn.gaple.rbac.entities.GXAdminPermissionsModel;
 import cn.gaple.rbac.mapper.GXAdminPermissionsMapper;
 import cn.gaple.rbac.repository.GXAdminPermissionsRepository;
 import cn.gaple.rbac.service.GXAdminPermissionsService;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class GXAdminPermissionsServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminPermissionsRepository, GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer> implements GXAdminPermissionsService {
+public class GXAdminPermissionsServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminPermissionsRepository, GXAdminPermissionsMapper, GXAdminPermissionsModel, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer> implements GXAdminPermissionsService {
     /**
      * 通过管理员ID获取权限集
      *
@@ -25,7 +25,7 @@ public class GXAdminPermissionsServiceImpl extends GXMyBatisBaseServiceImpl<GXAd
         return repository.getPermissionsByAdminId(adminId);
     }
 
-    public long create(GXAdminPermissionsEntity target, Dict param) {
+    public long create(GXAdminPermissionsModel target, Dict param) {
         repository.save(target);
         return target.getId();
     }

@@ -2,7 +2,7 @@ package cn.gaple.rbac.entities;
 
 import cn.gaple.rbac.core.constant.GXAdminConstant;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.po.GXBasePO;
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXAdminEntity extends GXBasePO {
+public class GXAdminModel extends GXMyBatisModel {
     /**
      * 主键ID
      */

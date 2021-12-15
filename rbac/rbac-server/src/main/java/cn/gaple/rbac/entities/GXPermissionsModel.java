@@ -1,8 +1,8 @@
 package cn.gaple.rbac.entities;
 
-import cn.gaple.rbac.core.constant.GXRoleConstant;
+import cn.gaple.rbac.core.constant.GXPermissionsConstant;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.po.GXBasePO;
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import cn.maple.core.framework.annotation.GXFieldComment;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -11,18 +11,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-@TableName(GXRoleConstant.TABLE_NAME)
+@TableName(GXPermissionsConstant.TABLE_NAME)
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXRoleEntity extends GXBasePO {
+public class GXPermissionsModel extends GXMyBatisModel {
     @GXFieldComment(zhDesc = "主键ID")
     private Integer id;
 
-    @GXFieldComment(zhDesc = "角色名字")
-    private String roleName;
-
-    @GXFieldComment("角色code")
+    @GXFieldComment(zhDesc = "权限码")
     private String code;
 
     @GXFieldComment("租户ID")

@@ -1,8 +1,8 @@
 package cn.gaple.rbac.entities;
 
-import cn.gaple.rbac.core.constant.GXMenuPermissionsConstant;
+import cn.gaple.rbac.core.constant.GXTokenConstant;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.po.GXBasePO;
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import cn.maple.core.framework.annotation.GXFieldComment;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -11,25 +11,28 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-@TableName(GXMenuPermissionsConstant.TABLE_NAME)
+@TableName(GXTokenConstant.TABLE_NAME)
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXMenuPermissionsEntity extends GXBasePO {
+public class GXTokenModel extends GXMyBatisModel {
     @GXFieldComment(zhDesc = "主键ID")
     private Integer id;
 
-    @GXFieldComment(zhDesc = "菜单ID")
-    private String menuId;
+    @GXFieldComment(zhDesc = "token数据")
+    private String token;
 
-    @GXFieldComment(zhDesc = "权限ID")
-    private String permissionId;
+    @GXFieldComment("过期事件")
+    private Integer expiredAt;
 
-    @GXFieldComment(zhDesc = "权限码")
-    private String permissionCode;
+    @GXFieldComment("所属平台(admin、user)")
+    private String platform;
 
-    @GXFieldComment("租户ID")
-    private String tenantId;
+    @GXFieldComment("目标(客户端)ID")
+    private Integer targetId;
+
+    @GXFieldComment("客户端IP")
+    private String clientIp;
 
     @GXFieldComment(zhDesc = "扩展预留信息")
     @TableField(typeHandler = JacksonTypeHandler.class)

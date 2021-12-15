@@ -2,7 +2,7 @@ package cn.gaple.rbac.service;
 
 import cn.gaple.rbac.dao.GXPermissionsDao;
 import cn.gaple.rbac.dto.res.GXPermissionsResDto;
-import cn.gaple.rbac.entities.GXPermissionsEntity;
+import cn.gaple.rbac.entities.GXPermissionsModel;
 import cn.gaple.rbac.mapper.GXPermissionsMapper;
 import cn.gaple.rbac.repository.GXPermissionsRepository;
 import cn.maple.core.datasource.service.GXMyBatisBaseService;
@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public interface GXPermissionsService extends GXMyBatisBaseService<GXPermissionsRepository, GXPermissionsMapper, GXPermissionsEntity, GXPermissionsDao, GXPermissionsResDto, Integer> {
+public interface GXPermissionsService extends GXMyBatisBaseService<GXPermissionsRepository, GXPermissionsMapper, GXPermissionsModel, GXPermissionsDao, GXPermissionsResDto, Integer> {
     /**
      * 获取管理员的所有权限列表
      * 权限包括:

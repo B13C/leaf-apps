@@ -1,7 +1,7 @@
 package cn.gaple.rbac.web.controller.backend;
 
 import cn.gaple.rbac.dto.req.GXAdminPermissionsReqDto;
-import cn.gaple.rbac.entities.GXAdminPermissionsEntity;
+import cn.gaple.rbac.entities.GXAdminPermissionsModel;
 import cn.gaple.rbac.mapstruct.req.GXAdminPermissionsReqMapStruct;
 import cn.gaple.rbac.service.GXAdminPermissionsService;
 import cn.hutool.core.lang.Dict;
@@ -36,7 +36,7 @@ public class GXAdminPermissionsController implements GXBaseController {
     //@RequiresRoles("super_admin")
     @PostMapping("create")
     public GXResultUtils<Dict> create(@GXRequestBody @Validated GXAdminPermissionsReqDto source) {
-        GXAdminPermissionsEntity entity = adminPermissionsMapStruct.sourceToTarget(source);
+        GXAdminPermissionsModel entity = adminPermissionsMapStruct.sourceToTarget(source);
         long id = adminPermissionsService.create(entity, Dict.create());
         return GXResultUtils.ok(Dict.create().set("id", id));
     }

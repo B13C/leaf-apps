@@ -1,7 +1,7 @@
 package cn.gaple.rbac.dao;
 
 import cn.gaple.rbac.dto.res.GXAdminResDto;
-import cn.gaple.rbac.entities.GXAdminEntity;
+import cn.gaple.rbac.entities.GXAdminModel;
 import cn.gaple.rbac.mapper.GXAdminMapper;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.constant.GXBuilderConstant;
@@ -12,7 +12,7 @@ import com.google.common.collect.Table;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GXAdminDao extends GXMyBatisDao<GXAdminMapper, GXAdminEntity, GXAdminResDto, Integer> {
+public class GXAdminDao extends GXMyBatisDao<GXAdminMapper, GXAdminModel, GXAdminResDto, Integer> {
     public void test() {
         HashBasedTable<String, String, Object> ccc = HashBasedTable.create();
         ccc.put("username", GXBuilderConstant.LIKE, "AAAA");

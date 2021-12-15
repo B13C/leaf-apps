@@ -3,7 +3,7 @@ package cn.gaple.rbac.service.impl;
 import cn.gaple.rbac.dao.GXTokenDao;
 import cn.gaple.rbac.dto.req.GXTokenReqDto;
 import cn.gaple.rbac.dto.res.GXTokenResDto;
-import cn.gaple.rbac.entities.GXTokenEntity;
+import cn.gaple.rbac.entities.GXTokenModel;
 import cn.gaple.rbac.mapper.GXTokenMapper;
 import cn.gaple.rbac.mapstruct.req.GXTokenReqMapStruct;
 import cn.gaple.rbac.repository.GXTokenRepository;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class GXTokenServiceImpl extends GXMyBatisBaseServiceImpl<GXTokenRepository, GXTokenMapper, GXTokenEntity, GXTokenDao, GXTokenResDto, Integer> implements GXTokenService {
+public class GXTokenServiceImpl extends GXMyBatisBaseServiceImpl<GXTokenRepository, GXTokenMapper, GXTokenModel, GXTokenDao, GXTokenResDto, Integer> implements GXTokenService {
     @Resource
     private GXTokenReqMapStruct tokenMapStruct;
 
@@ -29,7 +29,7 @@ public class GXTokenServiceImpl extends GXMyBatisBaseServiceImpl<GXTokenReposito
     @Override
     @GXManualValidated
     public String saveOrUpdate(GXTokenReqDto reqDto) {
-        GXTokenEntity entity = tokenMapStruct.sourceToTarget(reqDto);
+        GXTokenModel entity = tokenMapStruct.sourceToTarget(reqDto);
         repository.updateOrCreate(entity, HashBasedTable.create());
         return null;
     }

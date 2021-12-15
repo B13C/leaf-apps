@@ -2,7 +2,7 @@ package cn.gaple.rbac.entities;
 
 import cn.gaple.rbac.core.constant.GXAdminPermissionsConstant;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.po.GXBasePO;
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import cn.maple.core.framework.annotation.GXFieldComment;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXAdminPermissionsEntity extends GXBasePO {
+public class GXAdminPermissionsModel extends GXMyBatisModel {
     @GXFieldComment(zhDesc = "主键ID")
     private Integer id;
 

@@ -2,7 +2,7 @@ package cn.gaple.rbac.service;
 
 import cn.gaple.rbac.dao.GXAdminRoleDao;
 import cn.gaple.rbac.dto.res.GXAdminRoleResDto;
-import cn.gaple.rbac.entities.GXAdminRoleEntity;
+import cn.gaple.rbac.entities.GXAdminRoleModel;
 import cn.gaple.rbac.mapper.GXAdminRoleMapper;
 import cn.gaple.rbac.repository.GXAdminRoleRepository;
 import cn.hutool.core.lang.Dict;
@@ -11,7 +11,7 @@ import cn.maple.core.datasource.service.GXMyBatisBaseService;
 import java.util.HashSet;
 import java.util.Set;
 
-public interface GXAdminRoleService extends GXMyBatisBaseService<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleEntity, GXAdminRoleDao, GXAdminRoleResDto, Integer> {
+public interface GXAdminRoleService extends GXMyBatisBaseService<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleModel, GXAdminRoleDao, GXAdminRoleResDto, Integer> {
     /**
      * 获取当前人的角色列表
      *
@@ -29,5 +29,5 @@ public interface GXAdminRoleService extends GXMyBatisBaseService<GXAdminRoleRepo
      * @param param  额外参数
      * @return long
      */
-    long create(GXAdminRoleEntity target, Dict param);
+    long create(GXAdminRoleModel target, Dict param);
 }

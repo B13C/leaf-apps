@@ -1,9 +1,8 @@
 package cn.gaple.rbac.entities;
 
-import cn.gaple.rbac.core.constant.GXMenuConstant;
-import cn.gaple.rbac.core.enums.GXMenuTypeEnum;
+import cn.gaple.rbac.core.constant.GXMenuPermissionsConstant;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.datasource.po.GXBasePO;
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import cn.maple.core.framework.annotation.GXFieldComment;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,31 +11,22 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-@TableName(GXMenuConstant.TABLE_NAME)
+@TableName(GXMenuPermissionsConstant.TABLE_NAME)
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-public class GXMenuEntity extends GXBasePO {
+public class GXMenuPermissionsModel extends GXMyBatisModel {
     @GXFieldComment(zhDesc = "主键ID")
     private Integer id;
 
-    @GXFieldComment(zhDesc = "菜单名字")
-    private String name;
+    @GXFieldComment(zhDesc = "菜单ID")
+    private String menuId;
 
-    @GXFieldComment(zhDesc = "父级ID")
-    private String pid;
+    @GXFieldComment(zhDesc = "权限ID")
+    private String permissionId;
 
-    @GXFieldComment(zhDesc = "按钮类型")
-    private GXMenuTypeEnum type;
-
-    @GXFieldComment(zhDesc = "资源控制器名字")
-    private String controllerName;
-
-    @GXFieldComment(zhDesc = "资源控制器动作名字")
-    private String actionName;
-
-    @GXFieldComment(zhDesc = "资源Code")
-    private String code;
+    @GXFieldComment(zhDesc = "权限码")
+    private String permissionCode;
 
     @GXFieldComment("租户ID")
     private String tenantId;

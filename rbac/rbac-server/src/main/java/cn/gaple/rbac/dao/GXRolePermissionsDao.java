@@ -1,7 +1,7 @@
 package cn.gaple.rbac.dao;
 
 import cn.gaple.rbac.dto.res.GXRolePermissionsResDto;
-import cn.gaple.rbac.entities.GXRolePermissionsEntity;
+import cn.gaple.rbac.entities.GXRolePermissionsModel;
 import cn.gaple.rbac.mapper.GXRolePermissionsMapper;
 import cn.maple.core.datasource.dao.GXMyBatisDao;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Set;
 
 @Component
-public class GXRolePermissionsDao extends GXMyBatisDao<GXRolePermissionsMapper, GXRolePermissionsEntity, GXRolePermissionsResDto, Integer> {
+public class GXRolePermissionsDao extends GXMyBatisDao<GXRolePermissionsMapper, GXRolePermissionsModel, GXRolePermissionsResDto, Integer> {
     /**
      * 通过管理员ID获取权限集
      *

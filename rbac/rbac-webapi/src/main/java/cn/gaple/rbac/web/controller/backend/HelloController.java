@@ -34,12 +34,10 @@ public class HelloController implements GXBaseController {
         HashBasedTable<String, String, Object> condition = HashBasedTable.create();
         condition.put("id", GXBuilderConstant.NUMBER_EQ, 1);
         condition.put(GXBuilderConstant.DELETED_FLAG_FIELD_NAME, GXBuilderConstant.EXCLUSION_DELETED_CONDITION_FLAG, "");
-        String nickname = adminRepository.findFieldByCondition("s_admin", condition, "nickname", String.class);
         HashBasedTable<String, String, Object> condition1 = HashBasedTable.create();
         condition1.put("id", GXBuilderConstant.NUMBER_EQ, 1);
-        String username = adminRepository.findFieldByCondition("s_admin", condition1, "username", String.class);
-
         Dict field = adminRepository.findFieldByCondition("s_admin", condition1, CollUtil.newHashSet("nickname", "username"), Dict.class);
-        return GXResultUtils.ok(nickname + " : " + username);
+        String nickname = adminRepository.findFieldByCondition("s_admin", condition, CollUtil.newHashSet("nickname"), String.class);
+        return GXResultUtils.ok("Hello : " + nickname);
     }
 }

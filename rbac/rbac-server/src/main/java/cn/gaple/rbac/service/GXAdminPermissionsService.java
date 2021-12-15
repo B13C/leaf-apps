@@ -2,7 +2,7 @@ package cn.gaple.rbac.service;
 
 import cn.gaple.rbac.dao.GXAdminPermissionsDao;
 import cn.gaple.rbac.dto.res.GXAdminPermissionsResDto;
-import cn.gaple.rbac.entities.GXAdminPermissionsEntity;
+import cn.gaple.rbac.entities.GXAdminPermissionsModel;
 import cn.gaple.rbac.mapper.GXAdminPermissionsMapper;
 import cn.gaple.rbac.repository.GXAdminPermissionsRepository;
 import cn.hutool.core.lang.Dict;
@@ -10,7 +10,7 @@ import cn.maple.core.datasource.service.GXMyBatisBaseService;
 
 import java.util.Set;
 
-public interface GXAdminPermissionsService extends GXMyBatisBaseService<GXAdminPermissionsRepository, GXAdminPermissionsMapper, GXAdminPermissionsEntity, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer> {
+public interface GXAdminPermissionsService extends GXMyBatisBaseService<GXAdminPermissionsRepository, GXAdminPermissionsMapper, GXAdminPermissionsModel, GXAdminPermissionsDao, GXAdminPermissionsResDto, Integer> {
     /**
      * 通过管理员ID获取权限集
      *
@@ -26,5 +26,5 @@ public interface GXAdminPermissionsService extends GXMyBatisBaseService<GXAdminP
      * @param param  额外参数
      * @return long
      */
-    long create(GXAdminPermissionsEntity target, Dict param);
+    long create(GXAdminPermissionsModel target, Dict param);
 }

@@ -1,7 +1,7 @@
 package cn.gaple.rbac.web.controller.backend;
 
 import cn.gaple.rbac.dto.req.GXAdminRoleReqDto;
-import cn.gaple.rbac.entities.GXAdminRoleEntity;
+import cn.gaple.rbac.entities.GXAdminRoleModel;
 import cn.gaple.rbac.mapstruct.req.GXAdminRoleReqMapStruct;
 import cn.gaple.rbac.service.GXAdminRoleService;
 import cn.hutool.core.lang.Dict;
@@ -35,7 +35,7 @@ public class GXAdminRoleController implements GXBaseController {
      */
     @PostMapping("create")
     public GXResultUtils<Dict> create(@GXRequestBody @Validated GXAdminRoleReqDto source) {
-        GXAdminRoleEntity entity = adminRoleReqMapStruct.sourceToTarget(source);
+        GXAdminRoleModel entity = adminRoleReqMapStruct.sourceToTarget(source);
         long id = adminRoleService.create(entity, Dict.create());
         return GXResultUtils.ok(Dict.create().set("id", id));
     }

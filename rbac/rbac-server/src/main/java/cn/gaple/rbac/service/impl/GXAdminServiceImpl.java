@@ -5,7 +5,7 @@ import cn.gaple.rbac.dao.GXAdminDao;
 import cn.gaple.rbac.dto.req.GXAdminLoginReqDto;
 import cn.gaple.rbac.dto.req.GXAdminReqDto;
 import cn.gaple.rbac.dto.res.GXAdminResDto;
-import cn.gaple.rbac.entities.GXAdminEntity;
+import cn.gaple.rbac.entities.GXAdminModel;
 import cn.gaple.rbac.mapper.GXAdminMapper;
 import cn.gaple.rbac.mapstruct.req.GXAdminReqMapStruct;
 import cn.gaple.rbac.repository.GXAdminRepository;
@@ -26,7 +26,7 @@ import java.util.HashSet;
 import java.util.Objects;
 
 @Service
-public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminEntity, GXAdminDao, GXAdminResDto, Integer> implements GXAdminService {
+public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminModel, GXAdminDao, GXAdminResDto, Integer> implements GXAdminService {
     @Resource
     private GXAdminReqMapStruct adminReqMapStruct;
 
@@ -52,7 +52,7 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
     @Override
     @GXManualValidated
     public String login(GXAdminLoginReqDto loginReqDto) {
-        GXAdminEntity adminEntity = new GXAdminEntity();
+        GXAdminModel adminEntity = new GXAdminModel();
         adminEntity.setExt(Dict.create().set("aaaa", "aaaa"));
         adminEntity.setUsername("aaammm");
         return "";
@@ -66,7 +66,7 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
      */
     @Override
     public Integer saveOrUpdate(GXAdminReqDto adminReqDto) {
-        GXAdminEntity entity = adminReqMapStruct.sourceToTarget(adminReqDto);
+        GXAdminModel entity = adminReqMapStruct.sourceToTarget(adminReqDto);
         HashBasedTable<String, String, Object> condition = HashBasedTable.create();
         condition.put("username", "=", "'" + adminReqDto.getUsername() + "'");
         repository.checkRecordIsExists(GXAdminConstant.TABLE_NAME, condition);
