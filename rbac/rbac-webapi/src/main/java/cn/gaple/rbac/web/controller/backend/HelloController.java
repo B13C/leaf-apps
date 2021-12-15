@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -36,8 +37,8 @@ public class HelloController implements GXBaseController {
         condition.put(GXBuilderConstant.DELETED_FLAG_FIELD_NAME, GXBuilderConstant.EXCLUSION_DELETED_CONDITION_FLAG, "");
         HashBasedTable<String, String, Object> condition1 = HashBasedTable.create();
         condition1.put("id", GXBuilderConstant.NUMBER_EQ, 1);
-        Dict field = adminRepository.findFieldByCondition("s_admin", condition1, CollUtil.newHashSet("nickname", "username"), Dict.class);
-        String nickname = adminRepository.findFieldByCondition("s_admin", condition, CollUtil.newHashSet("nickname"), String.class);
+        List<Dict> data = adminRepository.findByCondition("s_admin", condition1, CollUtil.newHashSet("nickname", "username"), Dict.class);
+        List<String> nickname = adminRepository.findByCondition("s_admin", condition, CollUtil.newHashSet("nickname"), String.class);
         return GXResultUtils.ok("Hello : " + nickname);
     }
 }
