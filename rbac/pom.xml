@@ -82,7 +82,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.maple.framework</groupId>
-                <artifactId>leaf-base-canal</artifactId>
+                <artifactId>leaf-base-data-sync</artifactId>>
                 <version>${leaf.framework.version}</version>
             </dependency>
             <dependency>

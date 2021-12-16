@@ -39,6 +39,10 @@
         </dependency>
         <dependency>
             <groupId>cn.maple.framework</groupId>
+            <artifactId>leaf-base-data-sync</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.maple.framework</groupId>
             <artifactId>leaf-base-dubbo-nacos-sentinel</artifactId>
         </dependency>
         <dependency>

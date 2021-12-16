@@ -41,6 +41,16 @@ spring:
             multi-statement-allow: true
   profiles:
     active: dev
+  # rabbitMQ配置
+  rabbitmq:
+    host: 192.168.1.245
+    port: 5672
+    username: britton
+    password: britton
+    publisher-returns: true
+    template:
+      mandatory: true
+    publisher-confirm-type: simple
   cache:
     type: caffeine
 
