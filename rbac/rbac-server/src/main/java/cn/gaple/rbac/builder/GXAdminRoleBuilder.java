@@ -6,7 +6,7 @@ import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.ReUtil;
 import cn.maple.core.datasource.builder.GXBaseBuilder;
-import cn.maple.core.datasource.constant.GXBuilderConstant;
+import cn.maple.core.framework.constant.GXBuilderConstant;
 import cn.maple.core.framework.constant.GXCommonConstant;
 import org.apache.ibatis.jdbc.SQL;
 
@@ -24,7 +24,7 @@ public class GXAdminRoleBuilder implements GXBaseBuilder {
             final String value = Convert.toStr(value1);
             String template = "{} " + GXBuilderConstant.STR_EQ;
             if (ReUtil.isMatch(GXCommonConstant.DIGITAL_REGULAR_EXPRESSION, value)) {
-                template = "{} " + GXBuilderConstant.NUMBER_EQ;
+                template = "{} " + GXBuilderConstant.EQ;
             }
             sql.WHERE(CharSequenceUtil.format(template, column, value));
         });
