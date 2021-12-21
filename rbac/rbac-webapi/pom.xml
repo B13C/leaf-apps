@@ -31,6 +31,10 @@
             <groupId>cn.maple.framework</groupId>
             <artifactId>leaf-base-redisson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.maple.framework</groupId>
+            <artifactId>leaf-base-datasource-mongodb</artifactId>
+        </dependency>
         <!-- swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
