@@ -35,7 +35,7 @@ public interface GXAdminService extends GXMyBatisBaseService<GXAdminRepository, 
      * @param adminReqDto 管理员参数
      * @return 管理员ID
      */
-    Integer saveOrUpdate(GXAdminReqDto adminReqDto);
+    Integer updateOrCreate(GXAdminReqDto adminReqDto);
 
     /**
      * 分页数据

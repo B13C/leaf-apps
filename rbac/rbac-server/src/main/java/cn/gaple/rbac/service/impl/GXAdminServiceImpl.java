@@ -15,10 +15,12 @@ import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import cn.maple.core.framework.annotation.GXManualValidated;
 import cn.maple.core.framework.constant.GXBuilderConstant;
+import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
 import cn.maple.core.framework.dto.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.res.GXPaginationResDto;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,6 +31,9 @@ import java.util.Objects;
 public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminModel, GXAdminDao, GXAdminResDto, Integer> implements GXAdminService {
     @Resource
     private GXAdminReqMapStruct adminReqMapStruct;
+
+    @Resource
+    private GXAdminRepository adminRepository;
 
     /**
      * 获取当前登录管理员的状态
@@ -65,7 +70,7 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
      * @return 管理员ID
      */
     @Override
-    public Integer saveOrUpdate(GXAdminReqDto adminReqDto) {
+    public Integer updateOrCreate(GXAdminReqDto adminReqDto) {
         GXAdminModel entity = adminReqMapStruct.sourceToTarget(adminReqDto);
         HashBasedTable<String, String, Object> condition = HashBasedTable.create();
         condition.put("username", "=", "'" + adminReqDto.getUsername() + "'");
@@ -90,5 +95,12 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
             queryCondition.put("username", GXBuilderConstant.RIGHT_LIKE, condition.getStr("username"));
         }
         return repository.paginate(page, pageSize, queryCondition, "paginate", CollUtil.newHashSet("*"));
+    }
+
+    @Override
+    @Cacheable(value = "categoryCache", key = "targetClass + methodName + #p0")
+    public GXAdminResDto findOneByCondition(GXBaseQueryParamInnerDto searchReqDto) {
+        GXAdminResDto adminResDto = adminRepository.findOneByCondition(searchReqDto);
+        return adminResDto;
     }
 }

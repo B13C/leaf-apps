@@ -1,4 +1,4 @@
-package cn.gaple.rbac.web.config;
+package cn.gaple.rbac.config;
 
 import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
 import io.swagger.annotations.ApiOperation;

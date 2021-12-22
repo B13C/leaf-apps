@@ -3,6 +3,7 @@ package cn.gaple.rbac.web.controller.backend;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ import java.util.Objects;
 @RequestMapping("/cache/backend")
 public class GXCacheManagerController {
     @Resource
-    private CacheManager caffeineCache;
+    private CaffeineCacheManager caffeineCache;
 
     /**
      * 清除框架缓存

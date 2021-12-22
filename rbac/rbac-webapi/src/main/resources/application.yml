@@ -52,7 +52,13 @@ spring:
       mandatory: true
     publisher-confirm-type: simple
   cache:
-    type: caffeine
+    type: redis
+    cache-names: categoryCache
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration
 
 #mybatis
 mybatis-plus:

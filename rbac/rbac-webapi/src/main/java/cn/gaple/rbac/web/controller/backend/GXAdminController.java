@@ -59,7 +59,7 @@ public class GXAdminController implements GXBaseController {
     @PostMapping("/save-or-update")
     public GXResultUtils<Dict> saveOrUpdate(@GXRequestBody @Validated GXAdminReqProtocol reqProtocol) {
         GXAdminReqDto adminReqDto = adminReqMapStruct.sourceToTarget(reqProtocol);
-        Integer adminId = adminService.saveOrUpdate(adminReqDto);
+        Integer adminId = adminService.updateOrCreate(adminReqDto);
         return GXResultUtils.ok(Dict.create().set("adminId", adminId));
     }
 
