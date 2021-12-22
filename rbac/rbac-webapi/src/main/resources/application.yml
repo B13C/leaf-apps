@@ -52,7 +52,7 @@ spring:
       mandatory: true
     publisher-confirm-type: simple
   cache:
-    type: caffeine
+    type: none
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
