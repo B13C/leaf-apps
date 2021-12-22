@@ -11,13 +11,13 @@ import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
 import cn.maple.core.framework.util.GXAuthCodeUtils;
 import cn.maple.core.framework.util.GXResultUtils;
 import com.google.common.collect.HashBasedTable;
+import org.redisson.spring.cache.RedissonSpringCacheManager;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-
 
 /**
  * 管理员管理
@@ -34,13 +34,17 @@ public class HelloController implements GXBaseController {
     @Resource
     private CaffeineCacheManager caffeineCacheManager;
 
+    @Resource
+    private RedissonSpringCacheManager redissonSpringCacheManager;
+
     @PostMapping("test")
     public GXResultUtils<String> test(@GXRequestBody TestProtocol req) {
         HashBasedTable<String, String, Object> condition = HashBasedTable.create();
         condition.put("id", GXBuilderConstant.EQ, 1);
         GXBaseQueryParamInnerDto paramInnerDto = GXBaseQueryParamInnerDto.builder().tableName("s_admin").condition(condition).build();
         GXAdminResDto adminResDto = adminService.findOneByCondition(paramInnerDto);
-
+        redissonSpringCacheManager.getCache("__DEFAULT__").put("AAA-britton", "AAAAAA-BBBBBB");
+        caffeineCacheManager.getCache("__DEFAULT__").put("AAA-britton", "AAAA_CCCC");
         return GXResultUtils.ok("Hello : " + "World : " + adminResDto);
     }
 
