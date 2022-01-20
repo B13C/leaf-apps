@@ -7,6 +7,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.lang.TypeReference;
+import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
 import com.geoxus.core.framework.constant.GXCommonConstant;
 import com.geoxus.core.framework.exception.GXBusinessException;
@@ -70,7 +71,7 @@ public class GXCheckCaptchaAspect {
             phone = GXBaseCommonUtil.decryptedPhoneNumber(phone);
             final String specialVerifyCode = GXBaseCommonUtil.getEnvironmentValue("special.verify_code", String.class, "");
             if (CollUtil.contains(specialPhone, phone) && verifyCode.equals(specialVerifyCode)) {
-                log.info(StrUtil.format("正在使用特殊号码进行验证 : {}-{}", phone, specialVerifyCode));
+                log.info(CharSequenceUtil.format("正在使用特殊号码进行验证 : {}-{}", phone, specialVerifyCode));
                 return point.proceed(point.getArgs());
             }
             if (!getSendSMSService().verification(phone, verifyCode)) {

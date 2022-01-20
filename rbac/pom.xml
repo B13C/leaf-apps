@@ -26,6 +26,7 @@
         <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
         <leaf.framework.version>2.0.0-SNAPSHOT</leaf.framework.version>
         <gaple.rbac.version>1.0.0-SNAPSHOT</gaple.rbac.version>
+        <lettucemod.version>1.8.1</lettucemod.version>
     </properties>
 
     <dependencyManagement>
@@ -89,6 +90,12 @@
                 <groupId>cn.maple.framework</groupId>
                 <artifactId>leaf-base-extension</artifactId>
                 <version>${leaf.framework.version}</version>
+            </dependency>
+            <!--RediSearch-->
+            <dependency>
+                <groupId>com.redis</groupId>
+                <artifactId>lettucemod</artifactId>
+                <version>${lettucemod.version}</version>
             </dependency>
             <!-- swagger -->
             <dependency>
