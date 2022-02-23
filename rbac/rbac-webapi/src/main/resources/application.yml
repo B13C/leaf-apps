@@ -58,6 +58,7 @@ spring:
       - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
       - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
       - org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration
+      - org.redisson.spring.starter.RedissonAutoConfiguration
 
 #mybatis
 mybatis-plus:

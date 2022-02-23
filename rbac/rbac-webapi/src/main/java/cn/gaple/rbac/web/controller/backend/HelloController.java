@@ -6,25 +6,23 @@ import cn.gaple.rbac.model.ETestModel;
 import cn.gaple.rbac.repository.GXAdminRepository;
 import cn.gaple.rbac.repository.MTestRepository;
 import cn.gaple.rbac.service.GXAdminService;
-import cn.gaple.rbac.web.dto.protocol.TestProtocol;
-import cn.gaple.rbac.web.dto.protocol.req.PersonReqDto;
-import cn.gaple.rbac.web.dto.protocol.res.PersonResDto;
+import cn.gaple.rbac.web.dto.protocol.req.GXAdminReqProtocol;
 import cn.gaple.rbac.web.mapstruct.PersonMapstruct;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.IdUtil;
-import cn.hutool.json.JSONUtil;
+import cn.maple.core.datasource.config.GXDynamicDataSource;
 import cn.maple.core.framework.annotation.GXRequestBody;
-import cn.maple.core.framework.constant.GXBuilderConstant;
 import cn.maple.core.framework.controller.GXBaseController;
-import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
 import cn.maple.core.framework.util.GXAuthCodeUtils;
+import cn.maple.core.framework.util.GXCommonUtils;
 import cn.maple.core.framework.util.GXResultUtils;
+import cn.maple.core.framework.util.GXTypeOfUtils;
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
+import com.mysql.cj.xdevapi.*;
 import com.redis.lettucemod.api.StatefulRedisModulesConnection;
 import com.redis.lettucemod.api.sync.RediSearchCommands;
-import com.redis.lettucemod.api.sync.RedisJSONCommands;
 import com.redis.lettucemod.search.Document;
 import com.redis.lettucemod.search.SearchOptions;
 import com.redis.lettucemod.search.SearchResults;
@@ -44,6 +42,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Properties;
 
 /**
  * 管理员管理
@@ -74,27 +74,30 @@ public class HelloController implements GXBaseController {
     private GXAdminRepository adminRepository;
 
     @Resource
+    private GXDynamicDataSource druidDataSource;
+
+    @Resource
     private StatefulRedisModulesConnection<String, String> redisModulesConnection;
 
+    public static void main(String[] args) {
+        Object a = "";
+        Object b = 0;
+        int c = 0;
+        Object d = m();
+        System.out.println(GXTypeOfUtils.typeof(a) + " : " + GXCommonUtils.getClassDefaultValue(GXTypeOfUtils.typeof(a)));
+        System.out.println(GXTypeOfUtils.typeof(b) + " : " + GXCommonUtils.getClassDefaultValue(GXTypeOfUtils.typeof(b)));
+        System.out.println(GXTypeOfUtils.typeof(c) + " : " + GXCommonUtils.getClassDefaultValue(GXTypeOfUtils.typeof(c)));
+        System.out.println(Objects.equals("", GXCommonUtils.getClassDefaultValue(GXTypeOfUtils.typeof(a))));
+    }
+
+    public static Object m() {
+        return null;
+    }
+
     @PostMapping("test")
-    public GXResultUtils<String> test(@GXRequestBody TestProtocol req) {
-        HashBasedTable<String, String, Object> condition = HashBasedTable.create();
-        condition.put("id", GXBuilderConstant.EQ, 1);
-        GXBaseQueryParamInnerDto paramInnerDto = GXBaseQueryParamInnerDto.builder().tableName("s_admin").condition(condition).build();
-        GXAdminResDto adminResDto = adminService.findOneByCondition(paramInnerDto);
-        redissonSpringCacheManager.getCache("__DEFAULT__").put("AAA-britton", "AAAAAA-BBBBBB");
-        caffeineCacheManager.getCache("__DEFAULT__").put("AAA-britton", "AAAA_CCCC");
-        PersonReqDto jack = new PersonReqDto();
-        jack.setUsername("AA");
-        jack.setAge(12);
-        PersonReqDto jack1 = new PersonReqDto();
-        jack1.setUsername("BBB");
-        jack1.setAge(12);
-        ArrayList<PersonReqDto> list = CollUtil.newArrayList(jack, jack1);
-        List<PersonResDto> personResDtos = convertSourceListToTargetList(list, personMapstruct);
-        List<PersonReqDto> ts = convertTargetListToSourceList(personResDtos, personMapstruct);
-        PersonResDto personResDto = convertSourceToTarget(jack, PersonResDto.class, null, null);
-        PersonReqDto personReqDto = convertTargetToSource(personResDto, personMapstruct);
+    public GXResultUtils<String> test(@GXRequestBody GXAdminReqProtocol req) {
+        CopyOptions copyOptions = new CopyOptions();
+        GXAdminResDto adminResDto = convertSourceToTarget(req, GXAdminResDto.class);
         return GXResultUtils.ok("Hello : " + "World : " + adminResDto);
     }
 
@@ -139,30 +142,31 @@ public class HelloController implements GXBaseController {
         return GXResultUtils.ok(eTestModel.getId());
     }
 
-
     @GetMapping("test1")
-    public GXResultUtils<String> test1() {
-        HashBasedTable<String, String, Object> condition = HashBasedTable.create();
-        condition.put("id", GXBuilderConstant.EQ, 1);
-        //condition.put("username", GXBuilderConstant.EQ, "jack");
-        final Table<String, String, Object> extData = HashBasedTable.create();
-        extData.put("ext", "realName", "卡那卡AAAA");
-        //extData.put("ext", "list[1]", Dict.create().set("u", "aaaa").set("OOOOOO", "KKKKKK"));
-        extData.put("ext", GXBuilderConstant.REMOVE_JSON_FIELD_PREFIX_FLAG + "list[0]", "");
-        Integer integer = adminRepository.updateFieldByCondition("s_admin", Dict.create().set("ext", extData).set("status", 1000), condition);
-        //GXAdminModel adminModel = convertSourceToTarget(adminResDto, GXAdminModel.class);
-        // adminModel.setUsername("AAAAAA");
-        //Integer update = adminRepository.update(adminModel, condition);
-        return GXResultUtils.ok("nickname");
+    public GXResultUtils<List<DbDoc>> test1() throws Throwable {
+        ClientFactory xClientFactory = new ClientFactory();
+        Properties properties = new Properties();
+        Client client = xClientFactory.getClient("mysqlx://britton:britton@192.168.56.101:33060/world_x", properties);
+        Schema schema = client.getSession().getSchema("world_x");
+        Collection flags = schema.getCollection("flags");
+        FindStatement findStatement = flags.find("city='资中' and $.detail[*].a='BB'");
+        DocResult execute = findStatement.execute();
+        ArrayList<DbDoc> arrayList = new ArrayList<>();
+        execute.forEachRemaining(one -> arrayList.add(one));
+        /*Session session = new SessionFactory().getSession("mysqlx://192.168.56.101:33060/world_x?user=britton&password=britton");
+        Schema db = session.getSchema("world_x");
+        Collection flags = db.getCollection("flags");
+        DbDoc one = flags.getOne("10001");*/
+        return GXResultUtils.ok(arrayList);
     }
 
     @GetMapping("test-redis-module")
     public GXResultUtils<List<Document<String, String>>> testRediSearch(String keyWord) {
-        RedisJSONCommands<String, String> jsonCommands = redisModulesConnection.sync();
+       /* RedisJSONCommands<String, String> jsonCommands = redisModulesConnection.sync();
         Dict data = Dict.create().set("user", Dict.create().set("id", "3").set("name", "britton002").set("country", "AAAABB").set("material", "绒布").set("url", "383").set("body", "四川-成都"));
         jsonCommands.jsonSet("doc:arr03", ".", JSONUtil.toJsonStr(data));
-        //jsonCommands.jsonDel("doc:arr04");
-        
+        //jsonCommands.jsonDel("doc:arr04");*/
+
         RediSearchCommands<String, String> search = redisModulesConnection.sync();
         /*CreateOptions<String, String> doc = CreateOptions.<String, String>builder()
                 .prefixes("1", "doc:")
@@ -173,6 +177,8 @@ public class HelloController implements GXBaseController {
                 Field.text("$.user.name").as("name").build(),
                 Field.text("$.user.country").as("country").build());*/
         // search.alter("userIdx", Field.text("$.user.id").as("id").build());
+        HashBasedTable<String, String, Object> condition = HashBasedTable.create();
+
         List<Object> userIdx = search.indexInfo("userIdx");
         System.out.println(userIdx);
         SearchOptions<String, String> searchOptions = SearchOptions.<String, String>builder().returnFields("name", "country", "material", "id")

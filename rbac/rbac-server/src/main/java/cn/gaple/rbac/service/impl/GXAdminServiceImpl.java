@@ -16,7 +16,6 @@ import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import cn.maple.core.framework.annotation.GXManualValidated;
 import cn.maple.core.framework.constant.GXBuilderConstant;
 import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
-import cn.maple.core.framework.dto.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.res.GXPaginationResDto;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -86,14 +85,10 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
      * @return 分页对象
      */
     @Override
-    public GXPaginationResDto<GXAdminResDto> pagination(GXBaseQueryParamReqDto queryParamReqDto) {
+    public GXPaginationResDto<GXAdminResDto> pagination(GXBaseQueryParamInnerDto queryParamReqDto) {
         Integer page = queryParamReqDto.getPage();
         Integer pageSize = queryParamReqDto.getPageSize();
-        Dict condition = queryParamReqDto.getCondition();
         Table<String, String, Object> queryCondition = HashBasedTable.create();
-        if (Objects.nonNull(condition)) {
-            queryCondition.put("username", GXBuilderConstant.RIGHT_LIKE, condition.getStr("username"));
-        }
         return repository.paginate(page, pageSize, queryCondition, "paginate", CollUtil.newHashSet("*"));
     }
 

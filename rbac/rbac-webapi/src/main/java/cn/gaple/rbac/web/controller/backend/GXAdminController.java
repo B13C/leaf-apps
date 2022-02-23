@@ -14,8 +14,8 @@ import cn.gaple.rbac.web.mapstruct.res.GXAdminResProtocolMapStruct;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.annotation.GXRequestBody;
 import cn.maple.core.framework.controller.GXBaseController;
+import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
 import cn.maple.core.framework.dto.protocol.res.GXPaginationResProtocol;
-import cn.maple.core.framework.dto.req.GXBaseQueryParamReqDto;
 import cn.maple.core.framework.dto.res.GXPaginationResDto;
 import cn.maple.core.framework.util.GXResultUtils;
 import org.springframework.validation.annotation.Validated;
@@ -65,7 +65,7 @@ public class GXAdminController implements GXBaseController {
 
     @PostMapping("/pagination")
     public GXResultUtils<GXPaginationResProtocol<GXAdminResProtocol>> pagination(@GXRequestBody @Validated GXAdminQueryObjectProtocol queryObjectProtocol) {
-        GXBaseQueryParamReqDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXBaseQueryParamReqDto.class);
+        GXBaseQueryParamInnerDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXBaseQueryParamInnerDto.class);
         GXPaginationResDto<GXAdminResDto> pagination = adminService.pagination(paramReqDto);
         GXPaginationResProtocol<GXAdminResProtocol> paginationResProtocol =
                 convertPaginationResToProtocol(pagination, GXAdminResProtocol.class);
