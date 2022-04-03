@@ -35,11 +35,6 @@
             </dependency>
             <dependency>
                 <groupId>com.geoxus.framework</groupId>
-                <artifactId>leaf-base-dubbo-zk</artifactId>
-                <version>${leaf.framework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.geoxus.framework</groupId>
                 <artifactId>leaf-base-dubbo-nacos</artifactId>
                 <version>${leaf.framework.version}</version>
             </dependency>

@@ -34,11 +34,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.maple.framework</groupId>
-                <artifactId>leaf-base-dubbo-zk</artifactId>
-                <version>${leaf.framework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.maple.framework</groupId>
                 <artifactId>leaf-base-dubbo-nacos</artifactId>
                 <version>${leaf.framework.version}</version>
             </dependency>

@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.geoxus.framework</groupId>
-            <artifactId>leaf-base-dubbo-zk</artifactId>
+            <artifactId>leaf-base-dubbo-nacos</artifactId>
         </dependency>
     </dependencies>
 

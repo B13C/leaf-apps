@@ -14,4 +14,9 @@ public class TestApiImpl implements TestApi {
         GXLoggerUtils.logInfo(log, "BBBBB");
         return "USER枫叶思源的测试API" + " : " + GXTraceIdContextUtils.getTraceId();
     }
+
+    @Override
+    public String testApi() {
+        return null;
+    }
 }

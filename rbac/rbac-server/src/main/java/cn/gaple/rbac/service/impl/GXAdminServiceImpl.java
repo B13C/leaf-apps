@@ -13,7 +13,6 @@ import cn.gaple.rbac.service.GXAdminService;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
-import cn.maple.core.framework.annotation.GXManualValidated;
 import cn.maple.core.framework.constant.GXBuilderConstant;
 import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
 import cn.maple.core.framework.dto.res.GXPaginationResDto;
@@ -54,7 +53,6 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
      * @return 管理员token
      */
     @Override
-    @GXManualValidated
     public String login(GXAdminLoginReqDto loginReqDto) {
         GXAdminModel adminEntity = new GXAdminModel();
         adminEntity.setExt(Dict.create().set("aaaa", "aaaa"));

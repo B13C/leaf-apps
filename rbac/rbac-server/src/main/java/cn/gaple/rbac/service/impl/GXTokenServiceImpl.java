@@ -9,7 +9,6 @@ import cn.gaple.rbac.mapstruct.req.GXTokenReqMapStruct;
 import cn.gaple.rbac.repository.GXTokenRepository;
 import cn.gaple.rbac.service.GXTokenService;
 import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
-import cn.maple.core.framework.annotation.GXManualValidated;
 import com.google.common.collect.HashBasedTable;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,6 @@ public class GXTokenServiceImpl extends GXMyBatisBaseServiceImpl<GXTokenReposito
      * @return token数据
      */
     @Override
-    @GXManualValidated
     public String saveOrUpdate(GXTokenReqDto reqDto) {
         GXTokenModel entity = tokenMapStruct.sourceToTarget(reqDto);
         repository.updateOrCreate(entity, HashBasedTable.create());
