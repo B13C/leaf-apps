@@ -7,24 +7,20 @@ import cn.gaple.rbac.mapper.TbAdMapper;
 import cn.gaple.rbac.repository.TbAdRepository;
 import cn.gaple.rbac.service.TbAdService;
 import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
-import org.mybatis.dynamic.sql.SqlBuilder;
-import org.mybatis.dynamic.sql.render.RenderingStrategies;
-import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Collection;
-
-import static cn.gaple.rbac.support.TbAdDynamicSQLSupport.tbAdTable;
+import java.util.Map;
+import java.util.function.Function;
 
 @Service
 public class TbAdServiceImpl extends GXMyBatisBaseServiceImpl<TbAdRepository, TbAdMapper, TbAdModel, TbAdDao, TbAdResDto, Integer> implements TbAdService {
+    @Resource
+    private TbAdRepository tbAdRepository;
+
     @Override
-    public void test() {
-        SelectStatementProvider selectStatement = SqlBuilder.select(tbAdTable.id, tbAdTable.url, tbAdTable.position).from(tbAdTable, "tt")
-                .where(tbAdTable.position, SqlBuilder.isEqualTo("web_index_lb"))
-                .build()
-                .render(RenderingStrategies.MYBATIS3);
-        Collection<TbAdResDto> selectManyMappedRows = findByCallMethod("selectManyMappedRows", selectStatement);
-        System.out.println(selectManyMappedRows);
+    public Collection<TbAdResDto> selectMany(Function<Map<String, Object>, TbAdResDto> rowMapper) {
+        return tbAdRepository.selectMany(rowMapper);
     }
 }
