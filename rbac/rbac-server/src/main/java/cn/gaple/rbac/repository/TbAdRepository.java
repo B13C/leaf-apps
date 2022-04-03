@@ -18,7 +18,7 @@ import static cn.gaple.rbac.support.TbAdDynamicSQLSupport.tbAdTable;
 
 @Repository
 public class TbAdRepository extends GXMyBatisRepository<TbAdMapper, TbAdModel, TbAdDao, TbAdResDto, Integer> {
-    public Collection<TbAdResDto> selectMany(Function<Map<String, Object>, TbAdResDto> rowMapper) {
+    public Collection<TbAdResDto> find(Function<Map<String, Object>, TbAdResDto> rowMapper) {
         SelectStatementProvider selectStatement = SqlBuilder.select(tbAdTable.id, tbAdTable.url, tbAdTable.position)
                 .from(tbAdTable, "tt")
                 .where(tbAdTable.position, SqlBuilder.isEqualTo("web_index_lb"))

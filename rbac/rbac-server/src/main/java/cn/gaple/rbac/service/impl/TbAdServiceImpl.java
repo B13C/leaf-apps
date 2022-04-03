@@ -21,6 +21,6 @@ public class TbAdServiceImpl extends GXMyBatisBaseServiceImpl<TbAdRepository, Tb
 
     @Override
     public Collection<TbAdResDto> selectMany(Function<Map<String, Object>, TbAdResDto> rowMapper) {
-        return tbAdRepository.selectMany(rowMapper);
+        return tbAdRepository.find(rowMapper);
     }
 }
