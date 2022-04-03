@@ -86,12 +86,6 @@
                 <artifactId>leaf-base-extension</artifactId>
                 <version>${leaf.framework.version}</version>
             </dependency>
-            <!--RediSearch-->
-            <dependency>
-                <groupId>com.redis</groupId>
-                <artifactId>lettucemod</artifactId>
-                <version>${lettucemod.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
