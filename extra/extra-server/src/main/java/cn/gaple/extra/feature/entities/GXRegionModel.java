@@ -1,5 +1,6 @@
 package cn.gaple.extra.feature.entities;
 
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -11,7 +12,7 @@ import java.util.List;
 @Data
 @TableName("region")
 @EqualsAndHashCode(callSuper = false)
-public class GXRegionEntity {
+public class GXRegionModel extends GXMyBatisModel {
     /**
      * 序列化ID
      */
@@ -49,5 +50,5 @@ public class GXRegionEntity {
     private String firstLetter;
 
     @TableField(exist = false)
-    private List<GXRegionEntity> children = null;
+    private List<GXRegionModel> children = null;
 }

@@ -1,14 +1,13 @@
 package cn.gaple.rbac.dto.res;
 
-import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.lang.Dict;
-import cn.maple.core.framework.dto.res.GXBaseResDto;
+import cn.maple.core.framework.dto.res.GXBaseDBResDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class GXAdminResDto extends GXBaseResDto {
+public class GXAdminDBResDto extends GXBaseDBResDto {
     /**
      * ID
      */
@@ -43,14 +42,4 @@ public class GXAdminResDto extends GXBaseResDto {
      * 扩展数据
      */
     private Dict ext;
-
-    @Override
-    protected void beforeMapping(CopyOptions copyOptions) {
-        super.beforeMapping(copyOptions);
-    }
-
-    @Override
-    protected void afterMapping(Object source) {
-        super.afterMapping(source);
-    }
 }

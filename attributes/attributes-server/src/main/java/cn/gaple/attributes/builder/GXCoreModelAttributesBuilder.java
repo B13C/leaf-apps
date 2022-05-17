@@ -5,7 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
-import com.geoxus.core.datasource.builder.GXBaseBuilder;
+import cn.maple.core.datasource.builder.GXBaseBuilder;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.HashSet;
@@ -54,15 +54,5 @@ public class GXCoreModelAttributesBuilder implements GXBaseBuilder {
         subSql = subSql.concat("\nINNER JOIN core_model_attributes on core_model_attributes.attribute_id=core_attributes.attribute_id");
         subSql = subSql.concat("\nWHERE (core_attributes.attribute_name = '{attribute_name}' AND core_model_attributes.core_model_id = {core_model_id}) LIMIT 1");
         return CharSequenceUtil.format(mainSql, StrUtil.format(subSql, param));
-    }
-
-    @Override
-    public Dict getDefaultSearchField() {
-        return Dict.create();
-    }
-
-    @Override
-    public String getModelIdentificationValue() {
-        return GXCoreModelAttributesConstant.MODEL_IDENTIFICATION_VALUE;
     }
 }

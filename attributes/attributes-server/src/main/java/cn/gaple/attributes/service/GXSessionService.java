@@ -1,7 +1,6 @@
 package cn.gaple.attributes.service;
 
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.framework.util.GXBaseCommonUtil;
 
 public interface GXSessionService {
     /**
@@ -10,7 +9,7 @@ public interface GXSessionService {
      * @return Long
      */
     default Long currentSessionUserId() {
-        return GXBaseCommonUtil.getCurrentSessionUserId();
+        return 0L;
     }
 
     /**

@@ -5,7 +5,7 @@ import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.crypto.digest.MD5;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.json.JSONUtil;
-import com.geoxus.core.framework.util.GXHttpContextUtils;
+import cn.maple.core.framework.util.GXCurrentRequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
@@ -45,7 +45,7 @@ public interface GXApiIdempotentService {
             //final ValueOperations<String, String> redis = SpringUtil.getBean(StringRedisTemplate.class).opsForValue();
             final String s = JSONUtil.toJsonStr(condition);
             String clientIP = "unknown";
-            final HttpServletRequest request = GXHttpContextUtils.getHttpServletRequest();
+            final HttpServletRequest request = GXCurrentRequestContextUtils.getHttpServletRequest();
             if (Objects.nonNull(request)) {
                 clientIP = ServletUtil.getClientIP(request);
             }
@@ -71,7 +71,7 @@ public interface GXApiIdempotentService {
             return dict;
         }
         headerNames.forEach(key -> {
-            final String header = GXHttpContextUtils.getHeader(key);
+            final String header = GXCurrentRequestContextUtils.getHeader(key);
             dict.set(key, header);
         });
         return dict;

@@ -7,7 +7,7 @@ import cn.gaple.extra.ueditor.define.GXBaseState;
 import cn.gaple.extra.ueditor.define.GXEditorResponseInfo;
 import cn.gaple.extra.ueditor.define.GXFileType;
 import cn.gaple.extra.ueditor.define.GXState;
-import com.geoxus.core.framework.util.GXSpringContextUtil;
+import cn.maple.core.framework.util.GXSpringContextUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.util.Map;
@@ -16,7 +16,7 @@ public class GXBase64Uploader {
     private static final GXEditorProperties properties;
 
     static {
-        properties = GXSpringContextUtil.getBean(GXEditorProperties.class);
+        properties = GXSpringContextUtils.getBean(GXEditorProperties.class);
     }
 
     private GXBase64Uploader() {

@@ -20,7 +20,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.geoxus.framework</groupId>
+            <groupId>cn.maple.framework</groupId>
             <artifactId>leaf-base-framework</artifactId>
         </dependency>
         <dependency>

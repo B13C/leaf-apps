@@ -1,7 +1,7 @@
 package cn.gaple.rbac.service.impl;
 
 import cn.gaple.rbac.dao.GXAdminRoleDao;
-import cn.gaple.rbac.dto.res.GXAdminRoleResDto;
+import cn.gaple.rbac.dto.res.GXAdminRoleDBResDto;
 import cn.gaple.rbac.entities.GXAdminRoleModel;
 import cn.gaple.rbac.mapper.GXAdminRoleMapper;
 import cn.gaple.rbac.repository.GXAdminRoleRepository;
@@ -11,7 +11,7 @@ import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GXAdminRoleServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleModel, GXAdminRoleDao, GXAdminRoleResDto, Integer>
+public class GXAdminRoleServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleModel, GXAdminRoleDao, GXAdminRoleDBResDto, Integer>
         implements GXAdminRoleService {
     /**
      * 创建数据

@@ -1,13 +1,12 @@
 package cn.gaple.rbac.dao;
 
-import cn.gaple.rbac.dto.res.GXTokenResDto;
 import cn.gaple.rbac.entities.GXTokenModel;
 import cn.gaple.rbac.mapper.GXTokenMapper;
 import cn.maple.core.datasource.dao.GXMyBatisDao;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GXTokenDao extends GXMyBatisDao<GXTokenMapper, GXTokenModel, GXTokenResDto, Integer> {
+public class GXTokenDao extends GXMyBatisDao<GXTokenMapper, GXTokenModel, Integer> {
     /**
      * 更具条件更新数据
      *

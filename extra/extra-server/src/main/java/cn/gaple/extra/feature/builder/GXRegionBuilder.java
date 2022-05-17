@@ -3,18 +3,13 @@ package cn.gaple.extra.feature.builder;
 import cn.gaple.extra.feature.constant.GXRegionConstant;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
-import com.geoxus.core.datasource.builder.GXBaseBuilder;
+import cn.maple.core.datasource.builder.GXBaseBuilder;
 import com.google.common.base.Joiner;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.ArrayList;
 
 public class GXRegionBuilder implements GXBaseBuilder {
-    @Override
-    public String getModelIdentificationValue() {
-        return GXRegionConstant.MODEL_IDENTIFICATION_VALUE;
-    }
-
     public String areaInfo(Dict param) {
         final ArrayList<Integer> list = new ArrayList<>();
         if (null != param.getInt("province_id")) {

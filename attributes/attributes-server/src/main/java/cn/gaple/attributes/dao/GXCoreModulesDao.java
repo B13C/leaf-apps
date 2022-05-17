@@ -1,10 +1,10 @@
 package cn.gaple.attributes.dao;
 
-import cn.gaple.attributes.entity.GXCoreModulesEntity;
+import cn.gaple.attributes.entity.GXCoreModulesModel;
 import cn.gaple.attributes.mapper.GXCoreModulesMapper;
-import com.geoxus.core.datasource.dao.GXBaseDao;
+import cn.maple.core.datasource.dao.GXMyBatisDao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class GXCoreModulesDao extends GXBaseDao<GXCoreModulesMapper, GXCoreModulesEntity> {
+public class GXCoreModulesDao extends GXMyBatisDao<GXCoreModulesMapper, GXCoreModulesModel, Integer> {
 }

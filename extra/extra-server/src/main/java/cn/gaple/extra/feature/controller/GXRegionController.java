@@ -1,9 +1,9 @@
 package cn.gaple.extra.feature.controller;
 
-import cn.gaple.extra.feature.entities.GXRegionEntity;
+import cn.gaple.extra.feature.entities.GXRegionModel;
 import cn.gaple.extra.feature.services.GXRegionService;
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.framework.util.GXResultUtil;
+import cn.maple.core.framework.util.GXResultUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,9 +21,9 @@ public class GXRegionController {
      * @return GXResultUtils
      */
     @GetMapping("/get-region-tree")
-    public GXResultUtil<List<GXRegionEntity>> getRegionTree() {
-        List<GXRegionEntity> list = regionService.getRegionTree();
-        return GXResultUtil.ok(list);
+    public GXResultUtils<List<GXRegionModel>> getRegionTree() {
+        List<GXRegionModel> list = regionService.getRegionTree();
+        return GXResultUtils.ok(list);
     }
 
     /**
@@ -33,8 +33,8 @@ public class GXRegionController {
      * @return GXResultUtils
      */
     @PostMapping("/get-region")
-    public GXResultUtil<List<GXRegionEntity>> getRegion(@RequestBody Dict param) {
-        List<GXRegionEntity> list = regionService.getRegion(param);
-        return GXResultUtil.ok(list);
+    public GXResultUtils<List<GXRegionModel>> getRegion(@RequestBody Dict param) {
+        List<GXRegionModel> list = regionService.getRegion(param);
+        return GXResultUtils.ok(list);
     }
 }

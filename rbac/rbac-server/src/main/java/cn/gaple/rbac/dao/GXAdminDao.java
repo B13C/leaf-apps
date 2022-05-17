@@ -1,25 +1,27 @@
 package cn.gaple.rbac.dao;
 
-import cn.gaple.rbac.dto.res.GXAdminResDto;
 import cn.gaple.rbac.entities.GXAdminModel;
 import cn.gaple.rbac.mapper.GXAdminMapper;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.dao.GXMyBatisDao;
 import cn.maple.core.framework.constant.GXBuilderConstant;
 import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
+import cn.maple.core.framework.dto.inner.condition.GXConditionStrEQ;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Component
-public class GXAdminDao extends GXMyBatisDao<GXAdminMapper, GXAdminModel, GXAdminResDto, Integer> {
+public class GXAdminDao extends GXMyBatisDao<GXAdminMapper, GXAdminModel, Integer> {
     public void test() {
-        HashBasedTable<String, String, Object> ccc = HashBasedTable.create();
-        ccc.put("username", GXBuilderConstant.LIKE, "AAAA");
+        GXConditionStrEQ userNameEQ = new GXConditionStrEQ(getTableName(), "username", "AAAA");
         GXBaseQueryParamInnerDto admin = GXBaseQueryParamInnerDto.builder()
                 .tableName("s_admin")
                 .tableNameAlias("aaaa")
-                .condition(ccc)
+                .condition(List.of(userNameEQ))
                 .build();
         findByCondition(admin);
         // left join s_admin admin ON admin.id = xxxx.admin_id and admin.name = "AAAA"
@@ -44,8 +46,8 @@ public class GXAdminDao extends GXMyBatisDao<GXAdminMapper, GXAdminModel, GXAdmi
         condition.put("c.name", GXBuilderConstant.LEFT_LIKE, "bbbbb");
         GXBaseQueryParamInnerDto paramInnerDto = GXBaseQueryParamInnerDto.builder()
                 .tableName("a")
-                .joins(joins)
-                .condition(condition)
+             /*   .joins(joins)
+                .condition(condition)*/
                 .build();
         findByCondition(paramInnerDto);
         System.out.println(AA);

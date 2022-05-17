@@ -1,14 +1,10 @@
 package cn.gaple.attributes.service;
 
-import cn.gaple.attributes.dao.GXCoreModelAttributesDao;
-import cn.gaple.attributes.entity.GXCoreModelAttributesEntity;
-import cn.gaple.attributes.mapper.GXCoreModelAttributesMapper;
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.datasource.service.GXDBBaseService;
 
 import java.util.List;
 
-public interface GXCoreModelAttributesService extends GXDBBaseService<GXCoreModelAttributesEntity, GXCoreModelAttributesMapper, GXCoreModelAttributesDao> {
+public interface GXCoreModelAttributesService {
     /**
      * 通过模型ID获取模型的属性
      *

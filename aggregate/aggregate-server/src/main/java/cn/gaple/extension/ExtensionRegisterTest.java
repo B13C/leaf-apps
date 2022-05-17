@@ -1,7 +1,9 @@
 package cn.gaple.extension;
 
 import cn.gaple.Application;
-import cn.gaple.extension.register.GXExtensionRegister;
+import cn.maple.extension.GXBizScenario;
+import cn.maple.extension.GXExtensionExecutor;
+import cn.maple.extension.register.GXExtensionRegister;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

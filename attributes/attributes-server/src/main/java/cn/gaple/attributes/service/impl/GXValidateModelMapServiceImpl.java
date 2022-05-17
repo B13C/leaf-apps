@@ -1,12 +1,11 @@
 package cn.gaple.attributes.service.impl;
 
-import cn.gaple.attributes.entity.GXCoreAttributesEntity;
+import cn.gaple.attributes.entity.GXCoreAttributesModel;
 import cn.gaple.attributes.service.GXCoreAttributesService;
 import cn.gaple.attributes.service.GXCoreModelService;
 import cn.gaple.attributes.validator.GXValidateModelMapService;
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.framework.exception.GXBusinessException;
-import com.geoxus.core.framework.pojo.GXResultCode;
+import cn.maple.core.framework.exception.GXBusinessException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,10 +27,10 @@ public class GXValidateModelMapServiceImpl implements GXValidateModelMapService 
             return false;
         }
         for (String key : keySet) {
-            final GXCoreAttributesEntity attributesEntity = coreAttributesService.getAttributeByAttributeName(map.getStr(key));
+            final GXCoreAttributesModel attributesEntity = coreAttributesService.getAttributeByAttributeName(map.getStr(key));
             final boolean matches = Pattern.matches(attributesEntity.getValidationExpression(), map.get(key).toString());
             if (!matches) {
-                throw new GXBusinessException(GXResultCode.PARAMETER_VALIDATION_ERROR);
+                throw new GXBusinessException("AAAA");
             }
         }
         return true;

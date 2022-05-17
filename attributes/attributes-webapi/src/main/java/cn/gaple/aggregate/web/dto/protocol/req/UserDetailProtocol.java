@@ -1,6 +1,6 @@
 package cn.gaple.aggregate.web.dto.protocol.req;
 
-import com.geoxus.core.framework.dto.protocol.req.GXBaseReqProtocol;
+import cn.maple.core.framework.dto.protocol.req.GXBaseReqProtocol;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

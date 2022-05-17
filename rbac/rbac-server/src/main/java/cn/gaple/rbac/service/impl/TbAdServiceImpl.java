@@ -1,7 +1,7 @@
 package cn.gaple.rbac.service.impl;
 
 import cn.gaple.rbac.dao.TbAdDao;
-import cn.gaple.rbac.dto.res.TbAdResDto;
+import cn.gaple.rbac.dto.res.TbAdDBResDto;
 import cn.gaple.rbac.entities.TbAdModel;
 import cn.gaple.rbac.mapper.TbAdMapper;
 import cn.gaple.rbac.repository.TbAdRepository;
@@ -15,12 +15,12 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-public class TbAdServiceImpl extends GXMyBatisBaseServiceImpl<TbAdRepository, TbAdMapper, TbAdModel, TbAdDao, TbAdResDto, Integer> implements TbAdService {
+public class TbAdServiceImpl extends GXMyBatisBaseServiceImpl<TbAdRepository, TbAdMapper, TbAdModel, TbAdDao, TbAdDBResDto, Integer> implements TbAdService {
     @Resource
     private TbAdRepository tbAdRepository;
 
     @Override
-    public Collection<TbAdResDto> selectMany(Function<Map<String, Object>, TbAdResDto> rowMapper) {
+    public Collection<TbAdDBResDto> selectMany(Function<Map<String, Object>, TbAdDBResDto> rowMapper) {
         return tbAdRepository.find(rowMapper);
     }
 }

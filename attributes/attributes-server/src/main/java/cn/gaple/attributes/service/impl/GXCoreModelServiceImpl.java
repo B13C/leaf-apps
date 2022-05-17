@@ -1,49 +1,30 @@
 package cn.gaple.attributes.service.impl;
 
-import cn.gaple.attributes.dao.GXCoreModelDao;
-import cn.gaple.attributes.entity.GXCoreModelEntity;
-import cn.gaple.attributes.mapper.GXCoreModelMapper;
+import cn.gaple.attributes.entity.GXCoreModelModel;
 import cn.gaple.attributes.service.GXCoreModelAttributesService;
 import cn.gaple.attributes.service.GXCoreModelService;
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.Dict;
-import cn.hutool.core.lang.TypeReference;
 import cn.hutool.core.text.CharSequenceUtil;
-import cn.hutool.json.JSONUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.geoxus.core.datasource.annotation.GXDataSource;
-import com.geoxus.core.datasource.constant.GXBaseBuilderConstant;
-import com.geoxus.core.datasource.service.impl.GXDBBaseServiceImpl;
-import com.geoxus.core.framework.constant.GXCommonConstant;
+import cn.maple.core.datasource.annotation.GXDataSource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.validation.ConstraintValidatorContext;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 @Slf4j
 @GXDataSource("framework")
-public class GXCoreModelServiceImpl extends GXDBBaseServiceImpl<GXCoreModelEntity, GXCoreModelMapper, GXCoreModelDao> implements GXCoreModelService {
+public class GXCoreModelServiceImpl implements GXCoreModelService {
     @Resource
     private GXCoreModelAttributesService coreModelAttributeService;
 
     @Override
-    @Cacheable(cacheManager = "caffeineCache", value = "FRAMEWORK-CACHE", key = "targetClass + methodName + #modelId + #modelAttributeField")
-    public GXCoreModelEntity getCoreModelByModelId(int modelId, String modelAttributeField) {
-        final GXCoreModelEntity entity = baseDao.getById(modelId);
-        if (null == entity) {
-            return null;
-        }
-        if (CharSequenceUtil.isBlank(modelAttributeField)) {
-            modelAttributeField = "";
-        }
-        final List<Dict> attributes = coreModelAttributeService.getModelAttributesByModelId(Dict.create().set(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME, modelId).set("db_field_name", modelAttributeField));
-        entity.setCoreAttributes(attributes);
-        return entity;
+    public GXCoreModelModel getCoreModelByModelId(int modelId, String modelAttributeField) {
+        return null;
     }
 
     @Override
@@ -53,7 +34,7 @@ public class GXCoreModelServiceImpl extends GXDBBaseServiceImpl<GXCoreModelEntit
 
     @Override
     public boolean checkFormKeyMatch(Set<String> keySet, String modelName) {
-        final GXCoreModelEntity modelEntity = getCoreModelByModelId(getModelIdByModelIdentification(modelName), null);
+        final GXCoreModelModel modelEntity = getCoreModelByModelId(getModelIdByModelIdentification(modelName), null);
         if (null == modelEntity) {
             return false;
         }
@@ -66,36 +47,18 @@ public class GXCoreModelServiceImpl extends GXDBBaseServiceImpl<GXCoreModelEntit
     }
 
     @Override
-    @Cacheable(cacheManager = "caffeineCache", value = "FRAMEWORK-CACHE", key = "targetClass + methodName + #p0")
     public Integer getModelIdByModelIdentification(String modelName) {
-        final Dict condition = Dict.create().set(GXBaseBuilderConstant.MODEL_IDENTIFICATION_NAME, modelName);
-        HashSet<String> field = CollUtil.newHashSet("model_id");
-        final Dict dict = getFieldValueBySQL(GXCoreModelEntity.class, field, condition, false);
-        return null == dict ? 0 : Optional.ofNullable(dict.getInt("modelId")).orElse(dict.getInt("model_id"));
+        return null;
     }
 
     @Override
-    @Cacheable(cacheManager = "caffeineCache", value = "FRAMEWORK-CACHE", key = "targetClass + methodName + #coreModelId")
     public String getModelTypeByModelId(long coreModelId, String defaultValue) {
-        Dict condition = Dict.create().set("model_id", coreModelId);
-        HashSet<String> field = CollUtil.newHashSet("model_identification");
-        Dict dict = getFieldValueBySQL(GXCoreModelEntity.class, field, condition, false);
-        String modelType = dict.getStr("model_identification");
-        if (CharSequenceUtil.isBlank(modelType)) {
-            return defaultValue;
-        }
-        return CharSequenceUtil.upperFirst(CharSequenceUtil.toCamelCase(modelType)) + "Type";
+        return "Type";
     }
 
     @Override
     public Dict getSearchCondition(Dict condition) {
-        final Dict searchCondition = getBaseMapper().getSearchCondition(condition);
-        if (null == searchCondition) {
-            return Dict.create();
-        }
-        final String searchConditionName = CharSequenceUtil.toUnderlineCase(GXBaseBuilderConstant.SEARCH_CONDITION_NAME);
-        return Convert.convert(new TypeReference<Dict>() {
-        }, JSONUtil.parse(Optional.ofNullable(searchCondition.getObj(searchConditionName)).orElse("{}")));
+        return Dict.create();
     }
 
     @Override
@@ -118,23 +81,7 @@ public class GXCoreModelServiceImpl extends GXDBBaseServiceImpl<GXCoreModelEntit
     }
 
     @Override
-    @Cacheable(cacheManager = "caffeineCache", value = "FRAMEWORK-CACHE", key = "targetClass + methodName + #tableName")
     public int getCoreModelIdByTableName(String tableName) {
-        final Dict condition = Dict.create().set("table_name", tableName);
-        final QueryWrapper<GXCoreModelEntity> queryWrapper = new QueryWrapper<GXCoreModelEntity>().select("model_id").allEq(condition);
-        Map<String, Object> data = baseDao.getMap(queryWrapper);
-        if (null == data || data.isEmpty()) {
-            return 0;
-        }
-        return Convert.convert(Integer.class, data.get("model_id"));
-    }
-
-    @Override
-    @Cacheable(cacheManager = "caffeineCache", value = "FRAMEWORK-CACHE", key = "targetClass + methodName + #value + #field")
-    public boolean validateExists(Object value, String field, ConstraintValidatorContext constraintValidatorContext, Dict param) throws UnsupportedOperationException {
-        log.info("validateExists : {} , field : {}", value, field);
-        final Integer coreModelId = Convert.toInt(value, 0);
-        final Object o = checkRecordIsExists(GXCoreModelEntity.class, Dict.create().set("model_id", coreModelId));
-        return 1 == Convert.convert(Integer.class, o, 0);
+        return 0;
     }
 }

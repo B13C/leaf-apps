@@ -1,10 +1,8 @@
 package cn.gaple.attributes.entity;
 
-import cn.gaple.attributes.service.GXCoreAttributesService;
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.geoxus.core.datasource.annotation.GXValidateDBExists;
-import com.geoxus.core.datasource.entity.GXBaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,7 +11,7 @@ import java.io.Serializable;
 @Data
 @TableName("core_model_attributes")
 @EqualsAndHashCode(callSuper = false)
-public class GXCoreModelAttributesEntity extends GXBaseEntity implements Serializable {
+public class GXCoreModelAttributesModel extends GXMyBatisModel implements Serializable {
     @TableId("model_attributes_id")
     private Integer modelAttributesId;
 
@@ -21,7 +19,6 @@ public class GXCoreModelAttributesEntity extends GXBaseEntity implements Seriali
 
     private int coreModelId;
 
-    @GXValidateDBExists(service = GXCoreAttributesService.class, fieldName = "attribute_id")
     private int attributeId;
 
     private String showName;

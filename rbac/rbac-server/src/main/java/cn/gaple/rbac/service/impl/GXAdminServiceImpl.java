@@ -4,7 +4,7 @@ import cn.gaple.rbac.core.constant.GXAdminConstant;
 import cn.gaple.rbac.dao.GXAdminDao;
 import cn.gaple.rbac.dto.req.GXAdminLoginReqDto;
 import cn.gaple.rbac.dto.req.GXAdminReqDto;
-import cn.gaple.rbac.dto.res.GXAdminResDto;
+import cn.gaple.rbac.dto.res.GXAdminDBResDto;
 import cn.gaple.rbac.entities.GXAdminModel;
 import cn.gaple.rbac.mapper.GXAdminMapper;
 import cn.gaple.rbac.mapstruct.req.GXAdminReqMapStruct;
@@ -13,7 +13,6 @@ import cn.gaple.rbac.service.GXAdminService;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.datasource.service.impl.GXMyBatisBaseServiceImpl;
-import cn.maple.core.framework.constant.GXBuilderConstant;
 import cn.maple.core.framework.dto.inner.GXBaseQueryParamInnerDto;
 import cn.maple.core.framework.dto.res.GXPaginationResDto;
 import com.google.common.collect.HashBasedTable;
@@ -22,11 +21,11 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.HashSet;
-import java.util.Objects;
 
 @Service
-public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminModel, GXAdminDao, GXAdminResDto, Integer> implements GXAdminService {
+public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminRepository, GXAdminMapper, GXAdminModel, GXAdminDao, GXAdminDBResDto, Integer> implements GXAdminService {
     @Resource
     private GXAdminReqMapStruct adminReqMapStruct;
 
@@ -71,8 +70,8 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
         GXAdminModel entity = adminReqMapStruct.sourceToTarget(adminReqDto);
         HashBasedTable<String, String, Object> condition = HashBasedTable.create();
         condition.put("username", "=", "'" + adminReqDto.getUsername() + "'");
-        repository.checkRecordIsExists(GXAdminConstant.TABLE_NAME, condition);
-        Integer integer = repository.updateOrCreate(entity, HashBasedTable.create());
+        repository.checkRecordIsExists(GXAdminConstant.TABLE_NAME, Collections.emptyList());
+        Integer integer = repository.updateOrCreate(entity);
         return integer;
     }
 
@@ -83,17 +82,18 @@ public class GXAdminServiceImpl extends GXMyBatisBaseServiceImpl<GXAdminReposito
      * @return 分页对象
      */
     @Override
-    public GXPaginationResDto<GXAdminResDto> pagination(GXBaseQueryParamInnerDto queryParamReqDto) {
+    public GXPaginationResDto<GXAdminDBResDto> pagination(GXBaseQueryParamInnerDto queryParamReqDto) {
         Integer page = queryParamReqDto.getPage();
         Integer pageSize = queryParamReqDto.getPageSize();
         Table<String, String, Object> queryCondition = HashBasedTable.create();
-        return repository.paginate(page, pageSize, queryCondition, "paginate", CollUtil.newHashSet("*"));
+        GXPaginationResDto<Dict> paginate = repository.paginate(getTableName(), page, pageSize, Collections.emptyList(), CollUtil.newHashSet("*"));
+        return null;
     }
 
     @Override
     @Cacheable(value = "categoryCache", key = "targetClass + methodName + #p0")
-    public GXAdminResDto findOneByCondition(GXBaseQueryParamInnerDto searchReqDto) {
-        GXAdminResDto adminResDto = adminRepository.findOneByCondition(searchReqDto);
-        return adminResDto;
+    public GXAdminDBResDto findOneByCondition(GXBaseQueryParamInnerDto searchReqDto) {
+        Dict data = adminRepository.findOneByCondition(searchReqDto);
+        return convertSourceToTarget(data, GXAdminDBResDto.class, null, null);
     }
 }

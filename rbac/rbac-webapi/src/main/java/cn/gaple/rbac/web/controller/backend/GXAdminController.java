@@ -2,7 +2,7 @@ package cn.gaple.rbac.web.controller.backend;
 
 import cn.gaple.rbac.dto.req.GXAdminLoginReqDto;
 import cn.gaple.rbac.dto.req.GXAdminReqDto;
-import cn.gaple.rbac.dto.res.GXAdminResDto;
+import cn.gaple.rbac.dto.res.GXAdminDBResDto;
 import cn.gaple.rbac.service.GXAdminService;
 import cn.gaple.rbac.web.dto.protocol.req.GXAdminLoginReqProtocol;
 import cn.gaple.rbac.web.dto.protocol.req.GXAdminReqProtocol;
@@ -66,7 +66,7 @@ public class GXAdminController implements GXBaseController {
     @PostMapping("/pagination")
     public GXResultUtils<GXPaginationResProtocol<GXAdminResProtocol>> pagination(@GXRequestBody @Validated GXAdminQueryObjectProtocol queryObjectProtocol) {
         GXBaseQueryParamInnerDto paramReqDto = convertSourceToTarget(queryObjectProtocol, GXBaseQueryParamInnerDto.class);
-        GXPaginationResDto<GXAdminResDto> pagination = adminService.pagination(paramReqDto);
+        GXPaginationResDto<GXAdminDBResDto> pagination = adminService.pagination(paramReqDto);
         GXPaginationResProtocol<GXAdminResProtocol> paginationResProtocol =
                 convertPaginationResToProtocol(pagination, GXAdminResProtocol.class);
         return GXResultUtils.ok(paginationResProtocol);

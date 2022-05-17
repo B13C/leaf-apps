@@ -4,7 +4,6 @@ import cn.gaple.extra.feature.services.GXApiIdempotentService;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
-import com.geoxus.core.framework.annotation.GXFieldComment;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import java.time.Duration;
 
 @Service
 public class GXApiIdempotentServiceImpl implements GXApiIdempotentService {
-    @GXFieldComment(zhDesc = "Guava缓存组件")
     private static final Cache<String, String> API_IDEMPOTENT_CACHE;
 
     static {

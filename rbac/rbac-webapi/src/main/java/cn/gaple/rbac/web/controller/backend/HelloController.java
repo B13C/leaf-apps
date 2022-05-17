@@ -1,6 +1,6 @@
 package cn.gaple.rbac.web.controller.backend;
 
-import cn.gaple.rbac.dto.res.TbAdResDto;
+import cn.gaple.rbac.dto.res.TbAdDBResDto;
 import cn.gaple.rbac.service.TbAdService;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.annotation.GXIgnoreLoginIntercept;
@@ -26,8 +26,8 @@ public class HelloController implements GXBaseController {
 
     @GetMapping("test")
     @GXIgnoreLoginIntercept
-    public GXResultUtils<Collection<TbAdResDto>> test() {
-        Collection<TbAdResDto> resDtoLst = tbAdService.selectMany(map -> convertSourceToTarget(map, TbAdResDto.class, Dict.create().set("name", "britton")));
+    public GXResultUtils<Collection<TbAdDBResDto>> test() {
+        Collection<TbAdDBResDto> resDtoLst = tbAdService.selectMany(map -> convertSourceToTarget(map, TbAdDBResDto.class, Dict.create().set("name", "britton")));
         return GXResultUtils.ok(resDtoLst);
     }
 }

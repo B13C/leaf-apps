@@ -6,14 +6,13 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
-import com.geoxus.core.framework.annotation.GXFieldComment;
-import com.geoxus.core.framework.util.GXCacheKeysUtils;
+import cn.maple.core.framework.util.GXCacheKeysUtils;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,14 +20,13 @@ import java.util.Map;
 @Service
 @Slf4j
 public class GXCaptchaServiceImpl implements GXCaptchaService {
-    @GXFieldComment(zhDesc = "Guava缓存组件")
     private static final Cache<String, String> CAPTCHA_CACHE;
 
     static {
         CAPTCHA_CACHE = CacheBuilder.newBuilder().maximumSize(10000).expireAfterWrite(Duration.ofSeconds(300L)).build();
     }
 
-    @Autowired
+    @Resource
     private GXCacheKeysUtils cacheKeysUtils;
 
     @Override

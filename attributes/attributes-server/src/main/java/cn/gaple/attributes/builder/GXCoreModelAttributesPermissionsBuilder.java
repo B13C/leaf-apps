@@ -5,7 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
-import com.geoxus.core.datasource.builder.GXBaseBuilder;
+import cn.maple.core.datasource.builder.GXBaseBuilder;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.HashSet;
@@ -34,15 +34,5 @@ public class GXCoreModelAttributesPermissionsBuilder implements GXBaseBuilder {
             sql.WHERE(StrUtil.format("cma.parent_id = {parent_id}", param));
         }
         return sql.toString();
-    }
-
-    @Override
-    public Dict getDefaultSearchField() {
-        return Dict.create();
-    }
-
-    @Override
-    public String getModelIdentificationValue() {
-        return GXCoreModelAttributesPermissionsConstant.MODEL_IDENTIFICATION_VALUE;
     }
 }

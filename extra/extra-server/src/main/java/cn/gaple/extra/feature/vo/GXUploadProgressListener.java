@@ -1,6 +1,5 @@
 package cn.gaple.extra.feature.vo;
 
-import com.geoxus.core.framework.pojo.GXProgressData;
 import org.apache.commons.fileupload.ProgressListener;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +12,7 @@ public class GXUploadProgressListener implements ProgressListener {
 
     public void setSession(HttpSession session) {
         this.session = session;
-        GXProgressData progress = new GXProgressData();
-        session.setAttribute("progress", progress);
+        session.setAttribute("progress", "adas");
     }
 
     /**
@@ -24,10 +22,7 @@ public class GXUploadProgressListener implements ProgressListener {
      */
     @Override
     public void update(long pBytesRead, long pContentLength, int pItems) {
-        GXProgressData progress = (GXProgressData) session.getAttribute("progress");
-        progress.setPBytesRead(pBytesRead);
-        progress.setPContentLength(pContentLength);
-        progress.setPItems(pItems);
+        
     }
 }
 

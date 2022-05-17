@@ -4,15 +4,13 @@ import cn.gaple.attributes.constant.GXCoreAttributeEnumsConstant;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
-import com.geoxus.core.datasource.builder.GXBaseBuilder;
-import com.geoxus.core.datasource.constant.GXBaseBuilderConstant;
+import cn.maple.core.datasource.builder.GXBaseBuilder;
 import org.apache.ibatis.jdbc.SQL;
 
 public class GXCoreAttributeEnumsBuilder implements GXBaseBuilder {
     public String listOrSearch(Dict param) {
         final SQL sql = new SQL().SELECT("cae.*").FROM(CharSequenceUtil.format("{} as cae", GXCoreAttributeEnumsConstant.TABLE_NAME));
         sql.INNER_JOIN("core_attributes ca on cae.attribute_id = ca.attribute_id");
-        mergeSearchConditionToSql(sql, param, false);
         return sql.toString();
     }
 
@@ -20,21 +18,6 @@ public class GXCoreAttributeEnumsBuilder implements GXBaseBuilder {
         final SQL sql = new SQL().SELECT("core_attributes_enums.*").FROM(CharSequenceUtil.format("{} as cae", GXCoreAttributeEnumsConstant.TABLE_NAME));
         sql.WHERE(StrUtil.format("attribute_enum_id = {attribute_enum_id}", param));
         return sql.toString();
-    }
-
-    @Override
-    public Dict getDefaultSearchField() {
-        return Dict.create()
-                .set("cae.coreModelId", GXBaseBuilderConstant.NUMBER_EQ)
-                .set("cae.attributeId", GXBaseBuilderConstant.NUMBER_EQ)
-                .set("ca.attributeName", GXBaseBuilderConstant.RIGHT_LIKE)
-                .set("ca.showName", GXBaseBuilderConstant.RIGHT_LIKE)
-                .set("ca.category", GXBaseBuilderConstant.RIGHT_LIKE);
-    }
-
-    @Override
-    public String getModelIdentificationValue() {
-        return GXCoreAttributeEnumsConstant.MODEL_IDENTIFICATION_VALUE;
     }
 
     public String exists(Dict param) {

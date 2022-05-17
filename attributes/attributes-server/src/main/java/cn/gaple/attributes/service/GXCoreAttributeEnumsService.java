@@ -1,12 +1,8 @@
 package cn.gaple.attributes.service;
 
-import cn.gaple.attributes.dao.GXCoreAttributeEnumsDao;
-import cn.gaple.attributes.entity.GXCoreAttributesEnumsEntity;
-import cn.gaple.attributes.mapper.GXCoreAttributeEnumsMapper;
-import com.geoxus.core.datasource.service.GXDBBaseService;
-import com.geoxus.core.datasource.service.GXValidateDBExistsService;
+import cn.maple.core.datasource.service.GXValidateDBExistsService;
 
-public interface GXCoreAttributeEnumsService extends GXDBBaseService<GXCoreAttributesEnumsEntity, GXCoreAttributeEnumsMapper, GXCoreAttributeEnumsDao>, GXValidateDBExistsService {
+public interface GXCoreAttributeEnumsService extends GXValidateDBExistsService {
     /**
      * 检测属性的值是否存在
      *

@@ -1,7 +1,6 @@
 package cn.gaple.rbac.web.dto.protocol.req;
 
 import cn.gaple.rbac.service.GXAdminService;
-import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.lang.Dict;
 import cn.maple.core.framework.dto.protocol.req.GXBaseReqProtocol;
 import cn.maple.core.framework.util.GXSpringContextUtils;
@@ -29,16 +28,6 @@ public class GXAdminReqProtocol extends GXBaseReqProtocol {
         GXAdminService adminService = GXSpringContextUtils.getBean(GXAdminService.class);
         Dict status = adminService.getStatus(1111);
         super.beforeRepair();
-    }
-
-    @Override
-    protected void beforeMapping(CopyOptions copyOptions) {
-        super.beforeMapping(copyOptions);
-    }
-
-    @Override
-    protected void afterMapping(Object source) {
-        super.afterMapping(source);
     }
 
     @Override

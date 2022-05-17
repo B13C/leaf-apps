@@ -1,15 +1,15 @@
 package cn.gaple.extra.feature.entities;
 
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.geoxus.core.datasource.entity.GXBaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @TableName("data_dict")
 @EqualsAndHashCode(callSuper = false)
-public class GXDataDictEntity extends GXBaseEntity {
+public class GXDataDictModel extends GXMyBatisModel {
     /**
      * 序列化ID
      */

@@ -2,8 +2,8 @@ package cn.gaple.extra.ueditor.support.qiniu;
 
 import cn.gaple.extra.ueditor.config.GXEditorProperties;
 import cn.hutool.json.JSONUtil;
-import com.geoxus.core.framework.exception.GXBusinessException;
-import com.geoxus.core.framework.util.GXSpringContextUtil;
+import cn.maple.core.framework.exception.GXBusinessException;
+import cn.maple.core.framework.util.GXSpringContextUtils;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.common.ZoneReqInfo;
@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 public class GXQiNiuUtils {
-    private static final GXEditorProperties properties = GXSpringContextUtil.getBean(GXEditorProperties.class);
+    private static final GXEditorProperties properties = GXSpringContextUtils.getBean(GXEditorProperties.class);
 
     private GXQiNiuUtils() {
     }
@@ -59,15 +59,12 @@ public class GXQiNiuUtils {
             Auth auth = Auth.create(accessKey, secretKey);
             String upToken = auth.uploadToken(bucket);
             Response response = uploadManager.put(byteInputStream, fileName, upToken, null, null);
-            //解析上传成功的结果
-            //DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
+            // 解析上传成功的结果
+            // DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
             DefaultPutRet putRet = JSONUtil.toBean(response.bodyString(), DefaultPutRet.class);
             return properties.getQiniu().getCdn() + putRet.key;
-        } catch (QiniuException ex) {
+        } catch (IOException ex) {
             log.error(ex.getMessage(), ex);
-            return null;
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
             return null;
         }
     }

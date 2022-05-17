@@ -1,8 +1,8 @@
 package cn.gaple.attributes.entity;
 
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.geoxus.core.datasource.entity.GXBaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @TableName("core_modules")
 @EqualsAndHashCode(callSuper = false)
-public class GXCoreModulesEntity extends GXBaseEntity implements Serializable {
+public class GXCoreModulesModel extends GXMyBatisModel implements Serializable {
     @TableId
     private Integer moduleId;
 

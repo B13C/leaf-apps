@@ -1,28 +1,16 @@
 package cn.gaple.extra.feature.services;
 
-import cn.gaple.extra.feature.dao.GXMediaLibraryDao;
-import cn.gaple.extra.feature.entities.GXMediaLibraryEntity;
-import cn.gaple.extra.feature.events.GXMediaLibraryEvent;
-import cn.gaple.extra.feature.mappers.GXMediaLibraryMapper;
-import cn.hutool.core.convert.Convert;
+import cn.gaple.extra.feature.entities.GXMediaLibraryModel;
 import cn.hutool.core.lang.Dict;
-import cn.hutool.core.lang.TypeReference;
-import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.json.JSONObject;
-import com.geoxus.core.datasource.service.GXDBBaseService;
-import com.geoxus.core.framework.constant.GXCommonConstant;
-import com.geoxus.core.framework.dto.protocol.res.GXPaginationProtocol;
-import com.geoxus.core.framework.exception.GXBusinessException;
-import com.geoxus.core.framework.service.GXBusinessService;
-import com.geoxus.core.framework.util.GXSpringContextUtil;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-public interface GXMediaLibraryService extends GXBusinessService, GXDBBaseService<GXMediaLibraryEntity, GXMediaLibraryMapper, GXMediaLibraryDao> {
+public interface GXMediaLibraryService {
     /**
      * 保存数据
      *
@@ -70,7 +58,7 @@ public interface GXMediaLibraryService extends GXBusinessService, GXDBBaseServic
      * @param param 参数
      * @return GXCoreMediaLibraryEntity
      */
-    GXMediaLibraryEntity saveFileInfo(MultipartFile file, Dict param);
+    GXMediaLibraryModel saveFileInfo(MultipartFile file, Dict param);
 
     /**
      * 通过条件删除media
@@ -131,12 +119,8 @@ public interface GXMediaLibraryService extends GXBusinessService, GXDBBaseServic
      * @param param       其他参数
      * @return Collection
      */
-    default Collection<GXMediaLibraryEntity> getMedia(int targetId, int coreModelId, Dict param) {
-        final GXMediaLibraryService mediaLibraryService = GXSpringContextUtil.getBean(GXMediaLibraryService.class);
-        assert mediaLibraryService != null;
-        Dict condition = Dict.create().set("target_id", targetId).set(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME, coreModelId);
-        condition.putAll(param);
-        return getBaseDao().listByMap(condition);
+    default Collection<GXMediaLibraryModel> getMedia(int targetId, int coreModelId, Dict param) {
+        return Collections.emptyList();
     }
 
     /**
@@ -156,80 +140,7 @@ public interface GXMediaLibraryService extends GXBusinessService, GXDBBaseServic
      * @param targetId 目标模型ID
      * @param param    参数
      */
-    default void handleMedia(GXMediaLibraryEntity target, @NotNull long targetId, @NotNull Dict param) {
-        if (param.getInt(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME) == null) {
-            throw new GXBusinessException(CharSequenceUtil.format("请在param参数中传递{}字段", GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME));
-        }
-        final String mediaFieldName = "media";
-        Object mediaObj = param.getObj(mediaFieldName);
-        if (Objects.isNull(mediaObj)) {
-            final String format = CharSequenceUtil.format("请求参数param中不存在{}字段", mediaFieldName);
-            //logger.error(format);
-            return;
-        }
-        final List<JSONObject> media = Convert.convert(new TypeReference<List<JSONObject>>() {
-        }, mediaObj);
-        if (Objects.nonNull(media)) {
-            Dict data = Dict.create()
-                    .set("media", media)
-                    .set("target_id", targetId)
-                    .set(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME, param.getInt(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME));
-            final GXMediaLibraryEvent<GXMediaLibraryEntity> event = new GXMediaLibraryEvent<>(target, data);
-            publishEvent(event);
-        }
-    }
-
-    /**
-     * 合并分页数据中的每条数据的资源文件
-     * <pre>
-     *     {@code
-     *     mergePaginationCoreMediaLibrary(pagination,"bannerId")
-     *     }
-     * </pre>
-     *
-     * @param pagination 分页数据
-     * @param modelIdKey 分页数据中模型的key,一般为数据表主键名字的驼峰名字
-     * @return GXPagination
-     */
-    default GXPaginationProtocol<Dict> mergePaginationCoreMediaLibrary(GXPaginationProtocol<Dict> pagination, String modelIdKey) {
-        final GXMediaLibraryService coreMediaLibraryService = GXSpringContextUtil.getBean(GXMediaLibraryService.class);
-        pagination.getRecords().forEach(o -> {
-            final Long targetId = o.getLong(modelIdKey);
-            final Long coreModelId = o.getLong("coreModelId");
-            final Dict condition = Dict.create()
-                    .set("target_id", targetId)
-                    .set(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME, coreModelId);
-            assert coreMediaLibraryService != null;
-            final List<Dict> mediaList = coreMediaLibraryService.getMediaByCondition(condition);
-            o.set("media", mediaList);
-        });
-        return pagination;
-    }
-
-    /**
-     * 合并分页数据中的每条数据的资源文件
-     * <pre>
-     *     {@code
-     *     mergePaginationCoreMediaLibrary(pagination)
-     *     }
-     * </pre>
-     *
-     * @param pagination 分页数据
-     * @return GXPagination
-     */
-    default GXPaginationProtocol<Dict> mergePaginationCoreMediaLibrary(GXPaginationProtocol<Dict> pagination) {
-        String modelIdKey = getPrimaryKey();
-        final GXMediaLibraryService coreMediaLibraryService = GXSpringContextUtil.getBean(GXMediaLibraryService.class);
-        pagination.getRecords().forEach(o -> {
-            final Long targetId = o.getLong(modelIdKey);
-            final Long coreModelId = o.getLong("coreModelId");
-            final Dict condition = Dict.create()
-                    .set("target_id", targetId)
-                    .set(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME, coreModelId);
-            assert coreMediaLibraryService != null;
-            final List<Dict> mediaList = coreMediaLibraryService.getMediaByCondition(condition);
-            o.set("media", mediaList);
-        });
-        return pagination;
+    default void handleMedia(GXMediaLibraryModel target, @NotNull long targetId, @NotNull Dict param) {
+        return;
     }
 }

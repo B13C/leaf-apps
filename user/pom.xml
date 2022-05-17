@@ -22,7 +22,7 @@
         <java.version>11</java.version>
         <lombok.version>1.18.22</lombok.version>
         <org.mapstruct.version>1.5.0.Beta1</org.mapstruct.version>
-        <leaf.framework.version>2.0.0-SNAPSHOT</leaf.framework.version>
+        <leaf.framework.version>4.0.0-SNAPSHOT</leaf.framework.version>
     </properties>
 
     <dependencyManagement>
@@ -69,7 +69,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.maple.framework</groupId>
-                <artifactId>leaf-base-canal</artifactId>
+                <artifactId>leaf-base-data-sync</artifactId>
                 <version>${leaf.framework.version}</version>
             </dependency>
         </dependencies>

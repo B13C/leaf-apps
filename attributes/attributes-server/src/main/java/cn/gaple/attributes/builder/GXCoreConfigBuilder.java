@@ -3,7 +3,7 @@ package cn.gaple.attributes.builder;
 import cn.gaple.attributes.constant.GXCoreConfigConstant;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
-import com.geoxus.core.datasource.builder.GXBaseBuilder;
+import cn.maple.core.datasource.builder.GXBaseBuilder;
 import org.apache.ibatis.jdbc.SQL;
 
 public class GXCoreConfigBuilder implements GXBaseBuilder {
@@ -18,15 +18,5 @@ public class GXCoreConfigBuilder implements GXBaseBuilder {
     public String detail(Dict param) {
         final SQL sql = new SQL().SELECT("*").FROM(GXCoreConfigConstant.TABLE_NAME).WHERE(CharSequenceUtil.format("{} = {}", GXCoreConfigConstant.PRIMARY_KEY, param.getInt(GXCoreConfigConstant.PRIMARY_KEY)));
         return sql.toString();
-    }
-
-    /**
-     * 数据配置的模型标识
-     *
-     * @return String
-     */
-    @Override
-    public String getModelIdentificationValue() {
-        return GXCoreConfigConstant.MODEL_IDENTIFICATION_VALUE;
     }
 }

@@ -1,7 +1,7 @@
 package cn.gaple.extra.feature.services;
 
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.framework.util.GXResultUtil;
+import cn.maple.core.framework.util.GXResultUtils;
 
 public interface GXSendSMSService {
     /**
@@ -11,7 +11,7 @@ public interface GXSendSMSService {
      * @param templateName 短信模板名字
      * @return ResultUtil
      */
-    GXResultUtil<String> send(String phone, String templateName, Dict param);
+    GXResultUtils<String> send(String phone, String templateName, Dict param);
 
     /**
      * 验证验证码

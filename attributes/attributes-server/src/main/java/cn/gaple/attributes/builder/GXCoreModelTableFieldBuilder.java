@@ -1,11 +1,10 @@
 package cn.gaple.attributes.builder;
 
 import cn.gaple.attributes.constant.GXCoreModelAttributesConstant;
-import cn.gaple.attributes.constant.GXCoreModelTableFieldConstant;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
-import com.geoxus.core.datasource.builder.GXBaseBuilder;
+import cn.maple.core.datasource.builder.GXBaseBuilder;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.HashSet;
@@ -36,15 +35,5 @@ public class GXCoreModelTableFieldBuilder implements GXBaseBuilder {
                 .INNER_JOIN("core_attributes ca ON cma.attribute_id = ca.attribute_id");
         sql.WHERE(CharSequenceUtil.format("core_model_table_field.core_model_id = {} AND core_model_table_field.table_field_name = '{}'", coreModelId, tableFieldName));
         return sql.toString();
-    }
-
-    /**
-     * 数据配置的模型标识
-     *
-     * @return String
-     */
-    @Override
-    public String getModelIdentificationValue() {
-        return GXCoreModelTableFieldConstant.MODEL_IDENTIFICATION_VALUE;
     }
 }

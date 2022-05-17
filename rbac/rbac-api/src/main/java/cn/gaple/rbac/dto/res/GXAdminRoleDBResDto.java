@@ -1,10 +1,10 @@
 package cn.gaple.rbac.dto.res;
 
-import cn.maple.core.framework.dto.res.GXBaseResDto;
+import cn.maple.core.framework.dto.res.GXBaseDBResDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class GXPermissionsResDto extends GXBaseResDto {
+public class GXAdminRoleDBResDto extends GXBaseDBResDto {
 }

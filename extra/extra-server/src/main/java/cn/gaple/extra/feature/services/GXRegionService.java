@@ -1,20 +1,17 @@
 package cn.gaple.extra.feature.services;
 
-import cn.gaple.extra.feature.dao.GXRegionDao;
-import cn.gaple.extra.feature.entities.GXRegionEntity;
-import cn.gaple.extra.feature.mappers.GXRegionMapper;
+import cn.gaple.extra.feature.entities.GXRegionModel;
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.datasource.service.GXDBBaseService;
 
 import java.util.List;
 
-public interface GXRegionService extends GXDBBaseService<GXRegionEntity, GXRegionMapper, GXRegionDao> {
+public interface GXRegionService {
     /**
      * 获取所有区域树
      *
      * @return
      */
-    List<GXRegionEntity> getRegionTree();
+    List<GXRegionModel> getRegionTree();
 
     /**
      * 通过条件获取区域
@@ -22,7 +19,7 @@ public interface GXRegionService extends GXDBBaseService<GXRegionEntity, GXRegio
      * @param param
      * @return
      */
-    List<GXRegionEntity> getRegion(Dict param);
+    List<GXRegionModel> getRegion(Dict param);
 
     /**
      * 转换名字到拼音

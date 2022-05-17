@@ -1,6 +1,6 @@
 package cn.gaple.extra.feature.properties;
 
-import com.geoxus.core.framework.factory.GXYamlPropertySourceFactory;
+import cn.maple.core.framework.factory.GXYamlPropertySourceFactory;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.ConfigurationProperties;

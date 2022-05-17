@@ -7,7 +7,6 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.lang.TypeReference;
 import cn.hutool.json.JSONObject;
-import com.geoxus.core.framework.constant.GXCommonConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.lang.NonNull;
@@ -29,7 +28,7 @@ public class GXMediaLibraryListener<T> implements ApplicationListener<GXMediaLib
 
     public void dealData(GXMediaLibraryEvent<T> event) {
         final Dict param = event.getParam();
-        final long coreModelId = param.getInt(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME);
+        final long coreModelId = param.getInt("core_model_id");
         final long targetId = param.getLong(GXMediaLibraryConstant.TARGET_ID_FIELD_NAME);
         if (targetId > 0) {
             Dict condition = Dict.create();

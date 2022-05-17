@@ -1,16 +1,12 @@
 package cn.gaple.attributes.service;
 
-import cn.gaple.attributes.dao.GXCoreModelDao;
-import cn.gaple.attributes.entity.GXCoreModelEntity;
-import cn.gaple.attributes.mapper.GXCoreModelMapper;
+import cn.gaple.attributes.entity.GXCoreModelModel;
 import cn.hutool.core.lang.Dict;
-import com.geoxus.core.datasource.service.GXDBBaseService;
-import com.geoxus.core.datasource.service.GXValidateDBExistsService;
-import com.geoxus.core.framework.exception.GXBusinessException;
+import cn.maple.core.framework.exception.GXBusinessException;
 
 import java.util.Set;
 
-public interface GXCoreModelService extends GXDBBaseService<GXCoreModelEntity, GXCoreModelMapper, GXCoreModelDao>, GXValidateDBExistsService {
+public interface GXCoreModelService {
     /**
      * 通过模型ID获取模型的相关信息
      *
@@ -18,7 +14,7 @@ public interface GXCoreModelService extends GXDBBaseService<GXCoreModelEntity, G
      * @param modelAttributeField 字段名字
      * @return GXCoreModelEntity
      */
-    GXCoreModelEntity getCoreModelByModelId(int modelId, String modelAttributeField);
+    GXCoreModelModel getCoreModelByModelId(int modelId, String modelAttributeField);
 
     /**
      * 检测模型是否拥有制定的字段

@@ -1,6 +1,5 @@
 package cn.gaple.extra.feature.annotation;
 
-import com.geoxus.core.datasource.service.GXDBBaseService;
 
 import java.lang.annotation.*;
 
@@ -13,6 +12,4 @@ public @interface GXRecordHistoryAnnotation {
     String historyTableName();
 
     String[] conditionalParameterName() default {};
-
-    Class<? extends GXDBBaseService<?, ?, ?>> service();
 }

@@ -1,7 +1,7 @@
 package cn.gaple.rbac.service;
 
 import cn.gaple.rbac.dao.GXAdminRoleDao;
-import cn.gaple.rbac.dto.res.GXAdminRoleResDto;
+import cn.gaple.rbac.dto.res.GXAdminRoleDBResDto;
 import cn.gaple.rbac.entities.GXAdminRoleModel;
 import cn.gaple.rbac.mapper.GXAdminRoleMapper;
 import cn.gaple.rbac.repository.GXAdminRoleRepository;
@@ -11,7 +11,7 @@ import cn.maple.core.datasource.service.GXMyBatisBaseService;
 import java.util.HashSet;
 import java.util.Set;
 
-public interface GXAdminRoleService extends GXMyBatisBaseService<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleModel, GXAdminRoleDao, GXAdminRoleResDto, Integer> {
+public interface GXAdminRoleService extends GXMyBatisBaseService<GXAdminRoleRepository, GXAdminRoleMapper, GXAdminRoleModel, GXAdminRoleDao, GXAdminRoleDBResDto, Integer> {
     /**
      * 获取当前人的角色列表
      *

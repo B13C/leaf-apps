@@ -1,6 +1,6 @@
 package cn.gaple.extra.ueditor.config;
 
-import com.geoxus.core.framework.factory.GXYamlPropertySourceFactory;
+import cn.maple.core.framework.factory.GXYamlPropertySourceFactory;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;

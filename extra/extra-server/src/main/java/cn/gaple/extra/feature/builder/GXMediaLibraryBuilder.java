@@ -3,8 +3,7 @@ package cn.gaple.extra.feature.builder;
 import cn.gaple.extra.feature.constant.GXMediaLibraryConstant;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.text.CharSequenceUtil;
-import com.geoxus.core.datasource.builder.GXBaseBuilder;
-import com.geoxus.core.framework.constant.GXCommonConstant;
+import cn.maple.core.datasource.builder.GXBaseBuilder;
 import org.apache.ibatis.jdbc.SQL;
 
 @SuppressWarnings("unused")
@@ -13,26 +12,16 @@ public class GXMediaLibraryBuilder implements GXBaseBuilder {
 
     public String listOrSearch(Dict param) {
         Long targetId = param.getLong(GXMediaLibraryConstant.TARGET_ID_FIELD_NAME);
-        Long coreModelId = param.getLong(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME);
+        Long coreModelId = param.getLong("core_model_id");
         return new SQL()
                 .SELECT("*").FROM(GXMediaLibraryConstant.TABLE_NAME)
                 .WHERE(CharSequenceUtil.format("target_id={} and core_model_id={}", targetId, coreModelId))
                 .toString();
     }
 
-    @Override
-    public Dict getDefaultSearchField() {
-        return Dict.create();
-    }
-
-    @Override
-    public String getModelIdentificationValue() {
-        return GXMediaLibraryConstant.MODEL_IDENTIFICATION_VALUE;
-    }
-
     public String deleteByCondition(Dict param) {
         Long targetId = param.getLong(GXMediaLibraryConstant.TARGET_ID_FIELD_NAME);
-        Long coreModelId = param.getLong(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME);
+        Long coreModelId = param.getLong("core_model_id");
         final SQL sql = new SQL()
                 .DELETE_FROM(GXMediaLibraryConstant.TABLE_NAME)
                 .WHERE(CharSequenceUtil.format("target_id = {} and core_model_id = {}", targetId, coreModelId));
@@ -41,7 +30,7 @@ public class GXMediaLibraryBuilder implements GXBaseBuilder {
 
     public String detail(Dict param) {
         Long targetId = param.getLong(GXMediaLibraryConstant.TARGET_ID_FIELD_NAME);
-        Long coreModelId = param.getLong(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME);
+        Long coreModelId = param.getLong("core_model_id");
         return new SQL().SELECT("id, model_id, core_model_id, file_name").FROM(GXMediaLibraryConstant.TABLE_NAME)
                 .WHERE(CharSequenceUtil.format("target_id={} and core_model_id={}", targetId, coreModelId))
                 .toString();
@@ -52,8 +41,8 @@ public class GXMediaLibraryBuilder implements GXBaseBuilder {
         if (null != param.getLong(GXMediaLibraryConstant.TARGET_ID_FIELD_NAME)) {
             sql.WHERE(CharSequenceUtil.format("target_id = {}", param.getLong(GXMediaLibraryConstant.TARGET_ID_FIELD_NAME)));
         }
-        if (null != param.getLong(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME)) {
-            sql.WHERE(CharSequenceUtil.format("core_model_id = {}", param.getLong(GXCommonConstant.CORE_MODEL_PRIMARY_FIELD_NAME)));
+        if (null != param.getLong("core_model_id")) {
+            sql.WHERE(CharSequenceUtil.format("core_model_id = {}", param.getLong("core_model_id")));
         }
         if (null != param.getStr("resource_type")) {
             sql.WHERE(CharSequenceUtil.format("resource_type = '{}'", param.getStr("resource_type")));

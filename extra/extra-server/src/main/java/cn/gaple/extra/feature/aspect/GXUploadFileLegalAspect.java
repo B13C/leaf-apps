@@ -1,9 +1,8 @@
 package cn.gaple.extra.feature.aspect;
 
-import com.geoxus.core.framework.constant.GXTokenConstant;
-import com.geoxus.core.framework.pojo.GXResultCode;
-import com.geoxus.core.framework.util.GXHttpContextUtils;
-import com.geoxus.core.framework.util.GXResultUtil;
+import cn.maple.core.framework.constant.GXTokenConstant;
+import cn.maple.core.framework.util.GXCurrentRequestContextUtils;
+import cn.maple.core.framework.util.GXResultUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,11 +20,11 @@ public class GXUploadFileLegalAspect {
 
     @Around("uploadFileLegalPointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
-        HttpServletRequest request = GXHttpContextUtils.getHttpServletRequest();
+        HttpServletRequest request = GXCurrentRequestContextUtils.getHttpServletRequest();
         assert request != null;
-        if (null != request.getHeader(GXTokenConstant.ADMIN_TOKEN) || null != request.getHeader(GXTokenConstant.USER_TOKEN)) {
+        if (null != request.getHeader(GXTokenConstant.ADMIN_TOKEN_NAME) || null != request.getHeader(GXTokenConstant.USER_TOKEN_NAME)) {
             return point.proceed();
         }
-        return GXResultUtil.error(GXResultCode.NEED_PERMISSION);
+        return GXResultUtils.error("AAAA");
     }
 }

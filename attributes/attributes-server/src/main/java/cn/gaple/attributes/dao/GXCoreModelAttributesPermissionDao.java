@@ -1,10 +1,10 @@
 package cn.gaple.attributes.dao;
 
-import cn.gaple.attributes.entity.GXCoreModelAttributesPermissionEntity;
+import cn.gaple.attributes.entity.GXCoreModelAttributesPermissionModel;
 import cn.gaple.attributes.mapper.GXCoreModelAttributesPermissionMapper;
-import com.geoxus.core.datasource.dao.GXBaseDao;
+import cn.maple.core.datasource.dao.GXMyBatisDao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class GXCoreModelAttributesPermissionDao extends GXBaseDao<GXCoreModelAttributesPermissionMapper, GXCoreModelAttributesPermissionEntity> {
+public class GXCoreModelAttributesPermissionDao extends GXMyBatisDao<GXCoreModelAttributesPermissionMapper, GXCoreModelAttributesPermissionModel, Integer> {
 }

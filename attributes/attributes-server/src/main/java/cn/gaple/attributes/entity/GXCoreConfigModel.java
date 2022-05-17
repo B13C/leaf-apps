@@ -1,10 +1,8 @@
 package cn.gaple.attributes.entity;
 
-import cn.gaple.attributes.service.impl.GXCoreModelServiceImpl;
+import cn.maple.core.datasource.model.GXMyBatisModel;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.geoxus.core.datasource.annotation.GXValidateDBExists;
-import com.geoxus.core.datasource.entity.GXBaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,11 +12,10 @@ import javax.validation.constraints.Pattern;
 @Data
 @TableName("core_config")
 @EqualsAndHashCode(callSuper = false)
-public class GXCoreConfigEntity extends GXBaseEntity {
+public class GXCoreConfigModel extends GXMyBatisModel {
     @TableId
     private Integer configId;
 
-    @GXValidateDBExists(service = GXCoreModelServiceImpl.class)
     private Integer coreModelId;
 
     @NotBlank()

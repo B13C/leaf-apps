@@ -8,7 +8,7 @@ import cn.gaple.extra.ueditor.define.GXEditorResponseInfo;
 import cn.gaple.extra.ueditor.define.GXState;
 import cn.gaple.extra.ueditor.upload.GXEditorUploader;
 import cn.hutool.json.JSONException;
-import com.geoxus.core.framework.util.GXSpringContextUtil;
+import cn.maple.core.framework.util.GXSpringContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.Map;
 public class GXActionEnter {
     private final GXEditorUploader editorUploader;
 
-    private final GXEditorProperties properties = GXSpringContextUtil.getBean(GXEditorProperties.class);
+    private final GXEditorProperties properties = GXSpringContextUtils.getBean(GXEditorProperties.class);
 
     private final HttpServletRequest request;
 
@@ -28,7 +28,7 @@ public class GXActionEnter {
         this.request = request;
         this.actionType = request.getParameter("action");
         this.configManager = GXConfigManager.getInstance(properties.getConfigFile());
-        editorUploader = GXSpringContextUtil.getBean(GXDefaultEditorUploader.class);
+        editorUploader = GXSpringContextUtils.getBean(GXDefaultEditorUploader.class);
     }
 
     public String exec() throws JSONException {

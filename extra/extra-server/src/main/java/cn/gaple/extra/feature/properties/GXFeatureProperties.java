@@ -1,7 +1,7 @@
 package cn.gaple.extra.feature.properties;
 
 import cn.gaple.extra.feature.interceptor.GXCustomMultipartResolver;
-import com.geoxus.core.framework.factory.GXYamlPropertySourceFactory;
+import cn.maple.core.framework.factory.GXYamlPropertySourceFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
